@@ -12,6 +12,10 @@ body {
   width: 0;
 }
 
+input[type="date"]:required:invalid::-webkit-datetime-edit {
+  visibility: hidden;
+}
+
 #canvas {
   position: absolute;
   width: 100%;
@@ -41,6 +45,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   text-align: center;
+  padding-top: 2rem;
 }
 
 .img img {
@@ -48,7 +53,7 @@ body {
 }
 
 form {
-  width: 360px;
+  width: 500px;
 }
 
 .login-content img {
@@ -150,6 +155,10 @@ form {
   font-family: "poppins", sans-serif;
 }
 
+input {
+  background: transparent;
+}
+
 .input-div.pass {
   margin-bottom: 4px;
 }
@@ -174,10 +183,9 @@ form {
   border-radius: 28px;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #47acdb, #50b1ce, #3d98cc);
+  background-image: linear-gradient(to right, #5fc2f0, #50b1ce, #3d98cc);
   background-size: 200%;
   font-size: 1.2rem;
-  color: #fff;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   margin: 1rem 0;
