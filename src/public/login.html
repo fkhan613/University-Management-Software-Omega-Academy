@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../public/css/loginregister.css" />
-        <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
       integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -32,7 +32,7 @@
         <img src="../public/img/bg.svg" />
       </div>
       <div class="login-content">
-        <form>
+        <form autocomplete="off">
           <img src="../public/img/loginAvatar.svg" />
           <h2 class="title">Student Login Portal</h2>
           <div class="input-div one">
@@ -41,9 +41,14 @@
             </div>
             <div class="div">
               <h5>Email</h5>
-              <input type="email" name="email" class="input" required
-              oninvalid="this.setCustomValidity('Please Enter valid email')"
-              oninput="setCustomValidity('')"
+              <input
+                type="email"
+                name="email"
+                class="input"
+                autocomplete="off"
+                required
+                oninvalid="this.setCustomValidity('Please enter a valid email')"
+                oninput="setCustomValidity('')"
               />
             </div>
           </div>
@@ -53,15 +58,28 @@
             </div>
             <div class="div">
               <h5>Password</h5>
-              <input type="password" name="password" class="input" required
-                oninvalid="this.setCustomValidity('Please Enter valid password')"
+              <input
+                type="password"
+                name="password"
+                class="input"
+                autocomplete="off"
+                required
+                oninvalid="this.setCustomValidity('Please enter a valid password')"
                 oninput="setCustomValidity('')"
               />
             </div>
           </div>
-          <a href="#" class="a" style="text-decoration: none">Forgot Password?</a>
+          <a href="#" class="a" style="text-decoration: none"
+            >Forgot Password?</a
+          >
           <input type="submit" name="login" class="btn" value="Login" />
-          <a href="register.php" class="a" style="text-align: center; text-decoration: none;"> Create an account</a>
+          <a
+            href="register.php"
+            class="a"
+            style="text-align: center; text-decoration: none"
+          >
+            Create an account</a
+          >
         </form>
       </div>
     </div>

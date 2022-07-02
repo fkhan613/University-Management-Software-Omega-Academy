@@ -32,7 +32,7 @@
         <img src="../public/img/bg.svg" />
       </div>
       <div class="login-content">
-        <form>
+        <form autocomplete="new-password">
           <img src="../public/img/loginAvatar.svg" />
           <h2 class="title">Student Registration Portal</h2>
           <div class="input-div one">
@@ -46,7 +46,8 @@
                 name="firstName"
                 class="input"
                 required
-                oninvalid="this.setCustomValidity('Please Enter valid email')"
+                autocomplete="new-password"
+                oninvalid="this.setCustomValidity('Please enter your first name')"
                 oninput="setCustomValidity('')"
               />
             </div>
@@ -62,7 +63,8 @@
                 name="lastName"
                 class="input"
                 required
-                oninvalid="this.setCustomValidity('Please Enter valid email')"
+                autocomplete="new-password"
+                oninvalid="this.setCustomValidity('Please enter your last name')"
                 oninput="setCustomValidity('')"
               />
             </div>
@@ -78,7 +80,8 @@
                 name="DOB"
                 class="input date"
                 required
-                oninvalid="this.setCustomValidity('Please Enter valid email')"
+                autocomplete="off"
+                oninvalid="this.setCustomValidity('Please enter your date of birth')"
                 oninput="setCustomValidity('')"
               />
             </div>
@@ -94,7 +97,8 @@
                 name="address"
                 class="input"
                 required
-                oninvalid="this.setCustomValidity('Please Enter valid email')"
+                autocomplete="off"
+                oninvalid="this.setCustomValidity('Please enter your address')"
                 oninput="setCustomValidity('')"
               />
             </div>
@@ -110,7 +114,8 @@
                 name="phoneNumber"
                 class="input"
                 required
-                oninvalid="this.setCustomValidity('Please Enter valid email')"
+                autocomplete="new-password"
+                oninvalid="this.setCustomValidity('Please enter your phone number')"
                 oninput="setCustomValidity('')"
               />
             </div>
@@ -126,7 +131,9 @@
                 name="email"
                 class="input"
                 required
-                oninvalid="this.setCustomValidity('Please Enter valid email')"
+                                autocomplete="false"
+
+                oninvalid="this.setCustomValidity('Please enter a valid email')"
                 oninput="setCustomValidity('')"
               />
             </div>
@@ -141,8 +148,9 @@
                 type="password"
                 name="password"
                 class="input"
+                autocomplete="off"
                 required
-                oninvalid="this.setCustomValidity('Please Enter valid password')"
+                oninvalid="this.setCustomValidity('Please enter a valid password')"
                 oninput="setCustomValidity('')"
               />
             </div>
