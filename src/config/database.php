@@ -10,5 +10,6 @@
 
     //check if connection is established
     if(!$conn){die('Connection failed: '.mysqli_connect_error());}
+    session_start();
 ?>
 <html><head><link rel="icon" type="image/png" href="../public/img/loginAvatar.svg"/></head></html> <!----Tab logo ------>
