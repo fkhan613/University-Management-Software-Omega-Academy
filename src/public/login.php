@@ -54,8 +54,8 @@
 
           if($login_stmt->num_rows == 1){
               //set cookies
-              setCookie("emailCookie", $email, time() + (86400 * 5), "/");
-              setCookie("passwordCookie", $pass, time() + (86400 * 5), "/");
+              setCookie("emailCookie", $email, time() + (86400 * 1), "/");
+              setCookie("passwordCookie", $pass, time() + (86400 * 1), "/");
           } else{
               echo "<script> alert('Incorrect email/password');</script>";
           }
