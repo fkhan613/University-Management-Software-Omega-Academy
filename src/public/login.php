@@ -1,3 +1,4 @@
+<?php include "../config/database.php" ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,7 +33,7 @@
         <img src="../public/img/bg.svg" />
       </div>
       <div class="login-content">
-        <form autocomplete="off">
+        <form autocomplete="off" action="../config/data.php" method="POST" enctype="multipart/form-data">
           <img src="../public/img/loginAvatar.svg" />
           <h2 class="title">Student Login Portal</h2>
           <div class="input-div one">
