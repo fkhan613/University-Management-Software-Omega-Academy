@@ -27,40 +27,42 @@
     <title>Student Login Portal</title>
   </head>
   <?php
-  //prepared statement to check valid login
-  $login_stmt = $conn->prepare("SELECT * FROM students WHERE email = ? AND student_pass = ?");
-  $login_stmt->bind_param("ss", $email, $pass);
+    //prepared statement to check valid login
+    $login_stmt = $conn->prepare("SELECT * FROM students WHERE email = ? AND student_pass = ?");
+    $login_stmt->bind_param("ss", $email, $pass);
 
-  //if cookie is set login
-  if (isset($_COOKIE['emailCookie']) && isset($_COOKIE['passwordCookie'])){
-        $login_stmt->bind_param("ss", $_COOKIE['emailCookie'], $_COOKIE['passwordCookie']);
-        $login_stmt->execute();
-        $login_stmt ->store_result();
-
-        if($login_stmt->num_rows > 0){
-          //send to main page
-        }
-  }
-
-  if(isset($_POST['login'])){
-      //assigne variables
-      $email = htmlspecialchars($_POST['email']);
-      $pass = htmlspecialchars($_POST['password']);
-
-      //check if email and password are correct
-      if(!empty($email) && !empty($pass) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    //if cookie is set login
+    if (isset($_COOKIE['emailCookie']) && isset($_COOKIE['passwordCookie'])){
+          $login_stmt->bind_param("ss", $_COOKIE['emailCookie'], $_COOKIE['passwordCookie']);
           $login_stmt->execute();
-          $login_stmt->store_result();
+          $login_stmt ->store_result();
 
-          if($login_stmt->num_rows == 1){
-              //set cookies
-              setCookie("emailCookie", $email, time() + (86400 * 1), "/");
-              setCookie("passwordCookie", $pass, time() + (86400 * 1), "/");
-          } else{
-              echo "<script> alert('Incorrect email/password');</script>";
+          if($login_stmt->num_rows > 0){
+            //send to main page
           }
-      }
-  }
+    }
+
+    if(isset($_POST['login'])){
+        //assigne variables
+        $email = htmlspecialchars($_POST['email']);
+        $pass = htmlspecialchars($_POST['password']);
+
+        //check if email and password are correct
+        if(!empty($email) && !empty($pass) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $login_stmt->execute();
+            $login_stmt->store_result();
+
+            if($login_stmt->num_rows == 1){
+                //set cookies
+                setCookie("emailCookie", $email, time() + (86400 * 1), "/");
+                setCookie("passwordCookie", $pass, time() + (86400 * 1), "/");
+
+                //send to main page
+            } else{
+                echo "<script> alert('Incorrect email or password');</script>";
+            }
+        }
+    }
 ?>
   <body>
     <canvas id="canvas"></canvas>

@@ -27,6 +27,11 @@
     <title>Student Registration</title>
   </head>
   <body>
+    <?php
+      //prepared statement to add student to database
+      $register_stmt = $conn->prepare("INSERT INTO students (first_name, last_name, dob, phone_number, address, email, student_pass) VALUES (?,?,?,?,?,?,?)");
+      $register_stmt->bind_param("sssssss", $fName, $lName, $dob, $phNum, $address, $email, $student_pass);
+    ?>
     <canvas id="canvas"></canvas>
     <div class="container">
       <div class="img">
