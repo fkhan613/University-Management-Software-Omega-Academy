@@ -39,6 +39,8 @@
 
           if($login_stmt->num_rows > 0){
             //send to main page
+            $_SESSION['authenticated'] = true;
+            header("Location: mainpage.php");
           }
     }
 
@@ -52,6 +54,7 @@
             $login_stmt->execute();
             $login_stmt->store_result();
 
+            //login successful
             if($login_stmt->num_rows == 1){
               if(isset($_POST['rememberMe'])){
                   //set cookies
@@ -59,8 +62,11 @@
                   setCookie("passwordCookie", $pass, time() + (86400 * 30), "/");
               }
               //send to main page
+               $_SESSION['authenticated'] = true;
+              header("Location: mainpage.php");
             } else{
               //USE TOASTIFY
+                $_SESSION['authenticated'] = false;
                 echo "<script> alert('Incorrect email or password');</script>";
             }
         }
