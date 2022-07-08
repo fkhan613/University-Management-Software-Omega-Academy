@@ -53,12 +53,14 @@
             $login_stmt->store_result();
 
             if($login_stmt->num_rows == 1){
-                //set cookies
-                setCookie("emailCookie", $email, time() + (86400 * 1), "/");
-                setCookie("passwordCookie", $pass, time() + (86400 * 1), "/");
-
-                //send to main page
+              if(isset($_POST['rememberMe'])){
+                  //set cookies
+                  setCookie("emailCookie", $email, time() + (86400 * 30), "/");
+                  setCookie("passwordCookie", $pass, time() + (86400 * 30), "/");
+              }
+              //send to main page
             } else{
+              //USE TOASTIFY
                 echo "<script> alert('Incorrect email or password');</script>";
             }
         }
@@ -108,17 +110,15 @@
               />
             </div>
           </div>
-          <a href="#" class="a" style="text-decoration: none"
-            >Forgot Password?</a
-          >
+          <input type = "checkbox" name = "rememberMe" class="rememberMe"/>
+          <label for="rememberMe" class="control-label">Remember me for 30 days</label>
           <input type="submit" name="login" class="btn" value="Login" />
           <a
             href="register.php"
             class="a"
-            style="text-align: center; text-decoration: none"
-          >
-            Create an account</a
-          >
+            style="text-align: center; text-decoration: none; position: absolute;"
+          >Create an account</a>
+          <a href="#" class="a" style="text-decoration: none">Forgot Password?</a>
         </form>
       </div>
     </div>
