@@ -19,50 +19,6 @@ inputs.forEach((input) => {
   input.addEventListener("blur", remcl);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var resize = function () {
   Canvas.width = Canvas.clientWidth;
   Canvas.height = Canvas.clientHeight;
