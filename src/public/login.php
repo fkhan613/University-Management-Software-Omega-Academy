@@ -60,6 +60,7 @@
                   //set cookies
                   setCookie("emailCookie", $email, time() + (86400 * 30), "/");
                   setCookie("passwordCookie", $pass, time() + (86400 * 30), "/");
+                  $_SESSION['rememberMe'] = true;
               }
               //send to main page
                $_SESSION['authenticated'] = true;

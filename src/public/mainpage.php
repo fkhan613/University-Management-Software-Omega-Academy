@@ -10,10 +10,9 @@
 <body>
     <?php
         if(!$_SESSION['authenticated']){
-            echo "NOT AUTHENTICATED";
-            header("Location: login.php");
+            echo "<script>alert('NOT AUTHENTICATED'); window.history.back();</script>";
         } else{
-            echo "AUTHENTICATED";
+            echo "<script>alert('AUTHENTICATED');</script>";
         }
 
         if(isset($_POST['logout'])){
