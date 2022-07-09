@@ -45,7 +45,7 @@
     }
 
     if(isset($_POST['login'])){
-        //assigne variables
+        //assign variables
         $email = htmlspecialchars($_POST['email']);
         $pass = htmlspecialchars($_POST['password']);
 
