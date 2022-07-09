@@ -66,7 +66,6 @@
                $_SESSION['authenticated'] = true;
               header("Location: mainpage.php");
             } else{
-              //USE TOASTIFY
                 $_SESSION['authenticated'] = false;
                 echo "<script> alert('Incorrect email or password');</script>";
             }
