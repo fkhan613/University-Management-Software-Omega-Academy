@@ -117,7 +117,7 @@
             </div>
           </div>
           <input type = "checkbox" name = "rememberMe" class="rememberMe"/>
-          <label for="rememberMe" class="control-label">Remember me for 5 days</label>
+          <label for="rememberMe" class="control-label" style="color: rgba(53, 52, 52, 0.719);font-size: 0.9rem;font-weight: bold;transition: 0.3s;">Remember me for 5 days</label>
           <input type="submit" name="login" class="btn" value="Login" />
           <a
             href="register.php"
