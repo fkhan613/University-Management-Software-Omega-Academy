@@ -58,8 +58,8 @@
             if($login_stmt->num_rows == 1){
               if(isset($_POST['rememberMe'])){
                   //set cookies
-                  setCookie("emailCookie", $email, time() + (86400 * 30), "/");
-                  setCookie("passwordCookie", $pass, time() + (86400 * 30), "/");
+                  setCookie("emailCookie", $email, time() + (86400 * 5), "/");
+                  setCookie("passwordCookie", $pass, time() + (86400 * 5), "/");
                   $_SESSION['rememberMe'] = true;
               }
               //send to main page
@@ -117,7 +117,7 @@
             </div>
           </div>
           <input type = "checkbox" name = "rememberMe" class="rememberMe"/>
-          <label for="rememberMe" class="control-label">Remember me for 30 days</label>
+          <label for="rememberMe" class="control-label">Remember me for 5 days</label>
           <input type="submit" name="login" class="btn" value="Login" />
           <a
             href="register.php"

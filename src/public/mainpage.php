@@ -10,12 +10,14 @@
 <body>
     <?php
         if(!$_SESSION['authenticated']){
-            echo "<script>alert('NOT AUTHENTICATED'); window.history.back();</script>";
+            echo "<script>alert('NOT AUTHENTICATED'); window.location.href='login.php';</script>";
         } else{
             echo "<script>alert('AUTHENTICATED');</script>";
         }
 
         if(isset($_POST['logout'])){
+            setcookie('emailCookie', '', time() - time(), '/'); // empty value and old timestamp
+            setcookie('passwordCookie', '', time() - time(), '/'); 
             session_unset();
             session_destroy();
             header("Location: login.php");

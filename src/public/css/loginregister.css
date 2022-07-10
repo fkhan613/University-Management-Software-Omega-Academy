@@ -196,6 +196,13 @@ input {
   background-position: right;
 }
 
+.rememberMe {
+  color: rgba(53, 52, 52, 0.719);
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
 @media screen and (max-width: 1050px) {
   .container {
     grid-gap: 5rem;
