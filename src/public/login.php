@@ -64,13 +64,14 @@
               }
               //send to main page
                $_SESSION['authenticated'] = true;
+               $_SESSION['email'] = $email;
               header("Location: mainpage.php");
             } else{
                 $_SESSION['authenticated'] = false;
                 echo "<script> alert('Incorrect email or password');</script>";
             }
         }
-    }
+    } 
 ?>
   <body>
     <canvas id="canvas"></canvas>
