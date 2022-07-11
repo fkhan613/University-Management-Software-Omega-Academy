@@ -66,7 +66,6 @@
                   //insert user into database
                   $register_stmt -> execute();
                   $register_stmt -> store_result();
-                  $_SESSION['email'] = $email;
                   echo ('<script> alert("Registration Successful"); window.location.href = "login.php"; </script>');
               }
             } else {
