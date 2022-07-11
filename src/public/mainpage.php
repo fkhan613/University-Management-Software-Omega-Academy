@@ -21,12 +21,12 @@
         if(isset($_POST['logout'])){
             setcookie('emailCookie', '', time() - time(), '/'); // empty value and old timestamp
             setcookie('passwordCookie', '', time() - time(), '/'); 
+            setcookie('tempAuth', '', time() - time(), '/'); 
             session_unset();
             session_destroy();
             header("Location: login.php");
         }
     ?>
-
     <form method="POST" action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>>
     <input type="submit" value="Logout" name="logout">
     </form>

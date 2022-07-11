@@ -35,9 +35,9 @@
     if (isset($_COOKIE['emailCookie']) && isset($_COOKIE['passwordCookie'])){
           $login_stmt->bind_param("ss", $_COOKIE['emailCookie'], $_COOKIE['passwordCookie']);
           $login_stmt->execute();
-          $login_stmt ->store_result();
+          $result = $login_stmt->get_result();
 
-          if($login_stmt->num_rows > 0){
+          if(mysqli_num_rows($result) > 0){
             //send to main page
             $_SESSION['authenticated'] = true;
             header("Location: mainpage.php");
@@ -53,10 +53,10 @@
         //check if email and password are correct
         if(!empty($email) && !empty($pass) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $login_stmt->execute();
-            $login_stmt->store_result();
-
+            $result = $login_stmt->get_result();
+            $_SESSION['user'] = $result->fetch_assoc();
             //login successful
-            if($login_stmt->num_rows == 1){
+            if(mysqli_num_rows($result) > 0){
               if(isset($_POST['rememberMe'])){
                   //set cookies
                   setCookie("emailCookie", $email, time() + (86400 * 5), "/");
