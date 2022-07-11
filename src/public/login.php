@@ -48,6 +48,7 @@
         //assign variables
         $email = htmlspecialchars($_POST['email']);
         $pass = htmlspecialchars($_POST['password']);
+        $_SESSION['rememberMe'] = false;
 
         //check if email and password are correct
         if(!empty($email) && !empty($pass) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -61,8 +62,9 @@
                   setCookie("emailCookie", $email, time() + (86400 * 5), "/");
                   setCookie("passwordCookie", $pass, time() + (86400 * 5), "/");
                   $_SESSION['rememberMe'] = true;
-              }
+              } 
               //send to main page
+               setCookie("tempAuth", true, time() + (3600), "/");
                $_SESSION['authenticated'] = true;
                $_SESSION['email'] = $email;
               header("Location: mainpage.php");
