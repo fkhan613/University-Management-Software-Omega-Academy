@@ -64,9 +64,8 @@
                   $_SESSION['rememberMe'] = true;
               } 
               //send to main page
-               setCookie("tempAuth", true, time() + (3600), "/");
+               setCookie("tempAuth", true, time() + (3600 * 2), "/");
                $_SESSION['authenticated'] = true;
-               $_SESSION['email'] = $email;
               header("Location: mainpage.php");
             } else{
                 $_SESSION['authenticated'] = false;
