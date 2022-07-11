@@ -190,7 +190,7 @@ input {
   text-transform: uppercase;
   margin: 1rem 0;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.5s;
 }
 .btn:hover {
   background-position: right;
