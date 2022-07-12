@@ -8,14 +8,6 @@ body {
   overflow: auto;
 }
 
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 ::-webkit-scrollbar {
   width: 0;
 }
@@ -57,12 +49,6 @@ input[type="date"]:required:invalid::-webkit-datetime-edit {
 .spinner::after {
   margin: 8.9px;
   animation-duration: 3s;
-}
-
-@keyframes spinner-a4dj62 {
-  100% {
-    transform: rotate(1turn);
-  }
 }
 
 #canvas, .container {
@@ -249,6 +235,21 @@ input {
 }
 .btn:hover {
   background-position: right;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spinner-a4dj62 {
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
 @media screen and (max-width: 1050px) {
