@@ -40,7 +40,7 @@
               Welcome to The
               <span
                 class="txt-type"
-                data-wait="1000"
+                data-wait="1500"
                 data-words='["Omega Academy", "Best Academy", "Place Where Students Strive"]'
               ></span>
             </h1>
