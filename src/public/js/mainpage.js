@@ -127,5 +127,4 @@ function type() {
     .type(".")
     .go();
 }
-type();
-setInterval(type,15000);
+setTimeout(type,1000);
