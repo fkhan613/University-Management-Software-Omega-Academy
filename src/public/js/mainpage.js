@@ -5,6 +5,7 @@ $(window).load(function () {
   $(".spinner-container").fadeOut("slow");
 });
 
+//this is the function that is used for the typewriter effect
 function type() {
   var title = document.querySelector("#title");
   titleLen = title.lenght;
@@ -126,6 +127,5 @@ function type() {
     .type(".")
     .go();
 }
-
 type();
 setInterval(type,15000);
