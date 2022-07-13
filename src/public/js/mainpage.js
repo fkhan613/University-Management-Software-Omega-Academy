@@ -5,126 +5,68 @@ $(window).load(function () {
   $(".spinner-container").fadeOut("slow");
 });
 
-//this is the function that is used for the typewriter effect
-function type() {
-  var title = document.querySelector("#title");
-  titleLen = title.lenght;
-  new TypeIt("#title", {
-    lifeLike: false,
-    speed: 0,
-  })
-    .delete(titleLen)
-    .type("W")
-    .pause(173)
-    .type("e")
-    .pause(114)
-    .type("l")
-    .pause(90)
-    .type("c")
-    .pause(113)
-    .type("o")
-    .pause(124)
-    .type("m")
-    .pause(100)
-    .type("e")
-    .pause(122)
-    .type(" ")
-    .pause(167)
-    .type("t")
-    .pause(65)
-    .type("o")
-    .pause(104)
-    .type(" ")
-    .pause(214)
-    .type("T")
-    .pause(155)
-    .type("h")
-    .pause(73)
-    .type("e")
-    .pause(107)
-    .type(" ")
-    .pause(255)
-    .type("O")
-    .pause(151)
-    .type("m")
-    .pause(385)
-    .type("e")
-    .pause(191)
-    .type("g")
-    .pause(236)
-    .type("a")
-    .pause(304)
-    .type(" ")
-    .pause(272)
-    .type("A")
-    .pause(206)
-    .type("c")
-    .pause(168)
-    .type("a")
-    .pause(150)
-    .type("d")
-    .pause(132)
-    .type("e")
-    .pause(41)
-    .type("m")
-    .pause(168)
-    .type("y")
-    .pause(348)
-    .type(".")
-    .pause(1481)
-    .delete(1)
-    .pause(501)
-    .delete(1)
-    .pause(46)
-    .delete(1)
-    .pause(31)
-    .delete(1)
-    .pause(30)
-    .delete(1)
-    .pause(31)
-    .delete(1)
-    .pause(31)
-    .delete(1)
-    .pause(151)
-    .delete(1)
-    .pause(145)
-    .delete(1)
-    .pause(136)
-    .delete(1)
-    .pause(132)
-    .delete(1)
-    .pause(118)
-    .delete(1)
-    .pause(130)
-    .delete(1)
-    .pause(155)
-    .delete(1)
-    .pause(627)
-    .type("B")
-    .pause(154)
-    .type("e")
-    .pause(173)
-    .type("s")
-    .pause(195)
-    .type("t")
-    .pause(213)
-    .type(" ")
-    .pause(182)
-    .type("A")
-    .pause(177)
-    .type("c")
-    .pause(158)
-    .type("a")
-    .pause(182)
-    .type("d")
-    .pause(123)
-    .type("e")
-    .pause(103)
-    .type("m")
-    .pause(187)
-    .type("y")
-    .pause(653)
-    .type(".")
-    .go();
+class TypeWriter {
+  constructor(txtElement, words, wait = 3000) {
+    this.txtElement = txtElement;
+    this.words = words;
+    this.txt = "";
+    this.wordIndex = 0;
+    this.wait = parseInt(wait, 10);
+    this.type();
+    this.isDeleting = false;
+  }
+
+  type() {
+    // Current index of word
+    const current = this.wordIndex % this.words.length;
+    // Get full text of current word
+    const fullTxt = this.words[current];
+
+    // Check if deleting
+    if (this.isDeleting) {
+      // Remove char
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      // Add char
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    // Insert txt into element
+    this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+    // Initial Type Speed
+    let typeSpeed = 100;
+
+    if (this.isDeleting) {
+      typeSpeed /= 2;
+    }
+
+    // If word is complete
+    if (!this.isDeleting && this.txt === fullTxt) {
+      // Make pause at end
+      typeSpeed = this.wait;
+      // Set delete to true
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === "") {
+      this.isDeleting = false;
+      // Move to next word
+      this.wordIndex++;
+      // Pause before start typing
+      typeSpeed = 500;
+    }
+
+    setTimeout(() => this.type(), typeSpeed);
+  }
 }
-setTimeout(type,1000);
+
+// Init On DOM Load
+document.addEventListener("DOMContentLoaded", init);
+
+// Init App
+function init() {
+  const txtElement = document.querySelector(".txt-type");
+  const words = JSON.parse(txtElement.getAttribute("data-words"));
+  const wait = txtElement.getAttribute("data-wait");
+  // Init TypeWriter
+  new TypeWriter(txtElement, words, wait);
+}
