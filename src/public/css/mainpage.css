@@ -52,7 +52,7 @@ body {
 }
 
 .icon {
-  width: 18em;
+  width: 17em;
   margin-left: 10em;
 }
 
@@ -69,6 +69,8 @@ body {
   font-size: 4em !important;
   font-weight: 300;
   letter-spacing: 2px;
+  margin-right: 1em;
+  margin-left: 1em;
 }
 
 .title.transition {
@@ -192,12 +194,11 @@ p {
     font-size: 2.3em !important;
   }
 
-  .icon{
-    width: 17em;
+  .icon {
+    width: 15em;
     margin-left: 6em;
   }
 }
-
 
 /*Shrinking for mobile*/
 @media (max-width: 768px) {
@@ -212,7 +213,7 @@ p {
     font-size: 2em !important;
   }
 
-  .icon{
+  .icon {
     width: 12em;
     margin-left: 6em;
   }
