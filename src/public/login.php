@@ -81,11 +81,11 @@
     <canvas id="canvas"></canvas>
     <div class="container">
       <div class="img">
-        <img src="../public/img/bg.svg" />
+        <img src="../public/img/bg.svg" loading="lazy"/>
       </div>
       <div class="login-content">
         <form autocomplete="off" action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> method="POST" enctype="multipart/form-data">
-          <img src="../public/img/loginAvatar.svg" />
+          <img src="../public/img/loginAvatar.svg" loading="lazy"/>
           <h2 class="title">Student Login Portal</h2>
           <div class="input-div one">
             <div class="i">
