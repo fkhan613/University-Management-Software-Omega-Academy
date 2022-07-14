@@ -51,9 +51,10 @@ body {
   animation-fill-mode: forwards;
 }
 
-.main-icon{
-  width: 25em;
+.icon{
+  width: 20em;
   margin-bottom: 2em;
+  margin-left: 10em;
 }
 
 h1 {
