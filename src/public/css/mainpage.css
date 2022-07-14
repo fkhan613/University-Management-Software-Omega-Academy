@@ -5,9 +5,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
   box-sizing: border-box;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -68,7 +67,7 @@ body {
 
 .title {
   position: relative;
-  right: -100%;
+  /* right: -100%; */
   font-family: "Lato", sans-serif;
   font-size: 3.4em !important;
   font-weight: 300;
@@ -77,10 +76,10 @@ body {
   margin-left: 1em;
 }
 
-.title.transition {
+/* .title.transition {
   right: 0;
   transition: 1.5s ease-in-out;
-}
+} */
 
 p {
   font-family: "Lato", sans-serif;
@@ -108,8 +107,9 @@ p {
 }
 
 .main-content {
+  outline: #2727fd solid;
   position: relative;
-  margin: 8em 3em;
+  margin: 8em 6em;
 }
 
 /*Flexbox for containers*/
@@ -238,6 +238,7 @@ p {
   }
   .title {
     font-size: 1.9em !important;
+    word-spacing: 3px
   }
 
   .icon {

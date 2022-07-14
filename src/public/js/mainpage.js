@@ -3,10 +3,11 @@ $(window).load(function () {
   // Animate loader off screen
   $(".spinner").fadeOut("slow");
   $(".spinner-container").fadeOut("slow");
-  setTimeout(() =>{
-      const title = document.getElementById("title");
-      title.classList.add("transition");
-  },1000);  
+  AOS.refresh();
+  setTimeout(() => {
+    const title = document.getElementById("title");
+    title.classList.add("transition");
+  }, 1000);
 });
 
 class TypeWriter {
