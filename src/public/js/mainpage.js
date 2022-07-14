@@ -1,4 +1,6 @@
-AOS.init();
+AOS.init({
+  easing: "ease-in-out-sine",
+});
 
 // Wait for window load
 $(window).load(function () {
