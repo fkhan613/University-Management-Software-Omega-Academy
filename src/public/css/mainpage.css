@@ -95,7 +95,7 @@ p {
   background: linear-gradient(
     60deg,
     rgba(84, 58, 183, 1) 0%,
-    rgba(0, 172, 193, 1) 100%
+    rgb(15, 113, 179) 100%
   );
   color: white;
   min-width: 100vw;
@@ -116,6 +116,60 @@ p {
   background: url("../img/patternpad.svg");
   width: 100%;
   border-radius: 15px;
+}
+
+a {
+  font-family: "Lato", sans-serif;
+  position: relative;
+  padding: 15px 30px;
+  color: rgb(15, 113, 179);
+  letter-spacing: 2px;
+  font-size: 20px;
+  text-decoration: none;
+  transition: 0.5s;
+  overflow: hidden;
+  width: 10em;
+}
+
+a:hover {
+  background: rgb(15, 113, 179);
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 50px rgb(15, 113, 179);
+  transition-delay: 0.5s;
+}
+
+a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid rgb(15, 113, 179);
+  border-left: 2px solid rgb(15, 113, 179);
+  transition: 0.5s;
+}
+
+a:hover:before {
+  width: 100%;
+  height: 100%;
+}
+
+a:hover:after {
+  width: 100%;
+  height: 100%;
+}
+
+a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid rgb(15, 113, 179);
+  border-right: 2px solid rgb(15, 113, 179);
+  transition: 0.5s;
 }
 
 /*Flexbox for containers*/
@@ -246,12 +300,12 @@ p {
     font-size: 2em !important;
   }
 
-  .second-title{
+  .second-title {
     margin: 3em 0.5em;
     padding: 0 3em;
   }
 
-  .second-title > h1{
+  .second-title > h1 {
     font-size: 2.5em !important;
   }
 
