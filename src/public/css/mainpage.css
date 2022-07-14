@@ -67,7 +67,6 @@ body {
 
 .title {
   position: relative;
-  /* right: -100%; */
   font-family: "Lato", sans-serif;
   font-size: 3.4em !important;
   font-weight: 300;
@@ -76,10 +75,12 @@ body {
   margin-left: 1em;
 }
 
-/* .title.transition {
-  right: 0;
-  transition: 1.5s ease-in-out;
-} */
+h1 {
+  font-family: "Lato", sans-serif;
+  font-size: 3.4em !important;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
 
 p {
   font-family: "Lato", sans-serif;
@@ -107,9 +108,13 @@ p {
 }
 
 .main-content {
-  outline: #2727fd solid;
   position: relative;
   margin: 8em 6em;
+}
+
+.main-content .second-title {
+  background: url("../img/patternpad.svg");
+  width: 100%;
 }
 
 /*Flexbox for containers*/
@@ -190,7 +195,26 @@ p {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1500px) {
+  .waves {
+    height: 40px;
+    min-height: 60px;
+  }
+  .content {
+    height: 30vh;
+  }
+
+  .title {
+    font-size: 5em !important;
+  }
+
+  .icon {
+    width: 40em;
+    margin-left: 3em;
+  }
+}
+
+@media (max-width: 980px) {
   .waves {
     height: 40px;
     min-height: 40px;
@@ -204,7 +228,7 @@ p {
 
   .icon {
     width: 15em;
-    margin-left: 6em;
+    margin-left: 4em;
   }
 }
 
@@ -221,6 +245,15 @@ p {
     font-size: 2em !important;
   }
 
+  .second-title{
+    margin: 3em 0.5em;
+    padding: 0 3em;
+  }
+
+  .second-title > h1{
+    font-size: 2.5em !important;
+  }
+
   .icon {
     width: 12em;
     margin-left: 6em;
@@ -228,7 +261,7 @@ p {
 }
 
 /*Shrinking for mobile*/
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .waves {
     height: 40px;
     min-height: 40px;
@@ -238,7 +271,7 @@ p {
   }
   .title {
     font-size: 1.9em !important;
-    word-spacing: 3px
+    word-spacing: 3px;
   }
 
   .icon {

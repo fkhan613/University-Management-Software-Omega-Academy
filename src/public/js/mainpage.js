@@ -3,11 +3,6 @@ $(window).load(function () {
   // Animate loader off screen
   $(".spinner").fadeOut("slow");
   $(".spinner-container").fadeOut("slow");
-  AOS.refresh();
-  setTimeout(() => {
-    const title = document.getElementById("title");
-    title.classList.add("transition");
-  }, 1000);
 });
 
 class TypeWriter {
@@ -40,7 +35,7 @@ class TypeWriter {
     this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
 
     // Initial Type Speed
-    let typeSpeed = 100;
+    let typeSpeed = 150;
 
     if (this.isDeleting) {
       typeSpeed /= 2;
