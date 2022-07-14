@@ -102,6 +102,7 @@ p {
   margin: 0;
   padding: 0;
 }
+/*Flexbox for containers*/
 
 .flex-column {
   display: flex;
@@ -112,7 +113,6 @@ p {
 }
 
 .flex {
-  /*Flexbox for containers*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,7 +181,6 @@ p {
   }
 }
 
-/*Shrinking for mobile*/
 @media (max-width: 900px) {
   .waves {
     height: 40px;
