@@ -53,8 +53,11 @@ body {
 
 .icon{
   width: 20em;
-  margin-bottom: 2em;
   margin-left: 10em;
+}
+
+.carousel{
+  margin-bottom: 2em;
 }
 
 h1 {
