@@ -115,6 +115,7 @@ p {
 .main-content .second-title {
   background: url("../img/patternpad.svg");
   width: 100%;
+  border-radius: 15px;
 }
 
 /*Flexbox for containers*/
