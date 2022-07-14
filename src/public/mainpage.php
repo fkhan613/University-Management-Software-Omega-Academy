@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+        <link rel="stylesheet" href="../public/css/mainpage.css" />
+
 </head>
 <body>
     <div class="spinner-container">
@@ -91,7 +93,6 @@
       </section>
       <!--welcome section end-->
     </div>
-    <link rel="stylesheet" href="../public/css/mainpage.css" />
     <script src="https://unpkg.com/typeit@8.6.6/dist/index.umd.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>

@@ -10,6 +10,10 @@ body {
   overflow: auto;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 .spinner-container {
   display: flex;
   justify-content: center;
@@ -53,13 +57,13 @@ body {
 
 .icon {
   width: 17em;
+  height: 10em;
   margin-left: 10em;
 }
 
 .carousel {
-  padding-bottom: 2.4em;
-  bottom: 2.5em;
-  overflow: hidden;
+  padding-bottom: 5em;
+  margin-top: 7.4em;
 }
 
 .title {
@@ -97,13 +101,18 @@ p {
   min-width: 100vw;
 }
 .inner-header {
-  height: 75vh;
+  height: 76vh;
   width: 100%;
   margin: 0;
   padding: 0;
 }
-/*Flexbox for containers*/
 
+.main-content {
+  position: relative;
+  margin: 8em 3em;
+}
+
+/*Flexbox for containers*/
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -210,6 +219,25 @@ p {
   }
   .title {
     font-size: 2em !important;
+  }
+
+  .icon {
+    width: 12em;
+    margin-left: 6em;
+  }
+}
+
+/*Shrinking for mobile*/
+@media (max-width: 400px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+  .content {
+    height: 30vh;
+  }
+  .title {
+    font-size: 1.9em !important;
   }
 
   .icon {
