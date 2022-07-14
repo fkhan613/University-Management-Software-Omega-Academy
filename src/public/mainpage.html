@@ -24,6 +24,8 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous"
   />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <body>
     <div class="spinner-container">
       <div class="spinner"></div>
@@ -37,9 +39,10 @@
             <marquee
               behavior="scroll"
               direction="right"
-              scrollamount="17"
+              scrollamount="15"
               width="100%"
               class="carousel"
+              scrolldelay="0";
             >
               <img class="icon" loading="lazy" src="../public/img/icon1.svg" />
               <img class="icon" loading="lazy" src="../public/img/icon2.svg" />
@@ -59,13 +62,13 @@
               <img class="icon" loading="lazy" src="../public/img/icon16.svg" />
               <img class="icon" loading="lazy" src="../public/img/icon17.svg" />
             </marquee>
-            <h1>
+            <h1 class="title" id="title">
               Welcome to The
               <span
                 class="txt-type"
                 data-wait="2000"
                 style="font-weight: bold"
-                data-words='["Omega Academy", "Best Academy", "Place Where Students Strive"]'
+                data-words='["Omega Academy", "Best Academy", "Place Where Students Succeed", "Place Where Dreams Come True"]'
               ></span>
               |
             </h1>
@@ -117,9 +120,9 @@
       <!--welcome section end-->
     </div>
     <script src="https://unpkg.com/typeit@8.6.6/dist/index.umd.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../public/js/mainpage.js"></script>
   </body>
 </html>

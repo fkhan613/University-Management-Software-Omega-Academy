@@ -51,20 +51,29 @@ body {
   animation-fill-mode: forwards;
 }
 
-.icon{
-  width: 20em;
+.icon {
+  width: 18em;
   margin-left: 10em;
 }
 
-.carousel{
+.carousel {
   padding-bottom: 2.4em;
+  bottom: 2.5em;
+  overflow: hidden;
 }
 
-h1 {
+.title {
+  position: relative;
+  right: -100%;
   font-family: "Lato", sans-serif;
-  font-size: 4em!important;
+  font-size: 4em !important;
   font-weight: 300;
   letter-spacing: 2px;
+}
+
+.title.transition {
+  right: 0;
+  transition: 1.5s ease-in-out;
 }
 
 p {
@@ -86,19 +95,18 @@ p {
   min-width: 100vw;
 }
 .inner-header {
-  height: 65vh;
+  height: 75vh;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-.flex-column{
+.flex-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-
 }
 
 .flex {
@@ -172,6 +180,26 @@ p {
 }
 
 /*Shrinking for mobile*/
+@media (max-width: 900px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+  .content {
+    height: 30vh;
+  }
+  .title {
+    font-size: 2.3em !important;
+  }
+
+  .icon{
+    width: 17em;
+    margin-left: 6em;
+  }
+}
+
+
+/*Shrinking for mobile*/
 @media (max-width: 768px) {
   .waves {
     height: 40px;
@@ -180,7 +208,12 @@ p {
   .content {
     height: 30vh;
   }
-  h1 {
+  .title {
     font-size: 2em !important;
+  }
+
+  .icon{
+    width: 12em;
+    margin-left: 6em;
   }
 }
