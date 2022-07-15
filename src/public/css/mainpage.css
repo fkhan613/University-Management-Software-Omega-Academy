@@ -129,6 +129,7 @@ a {
   transition: 0.5s;
   overflow: hidden;
   width: 10em;
+  margin-top:3em;
 }
 
 a:hover {
@@ -159,6 +160,7 @@ a:hover:after {
   width: 100%;
   height: 100%;
 }
+
 
 a:after {
   content: "";

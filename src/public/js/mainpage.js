@@ -5,6 +5,28 @@ $(window).load(function () {
   $(".spinner-container").fadeOut("slow");
 });
 
+$.fn.isInViewport = function () {
+  var elementTop = $(this).offset().top;
+  var elementBottom = elementTop + $(this).outerHeight();
+
+  var viewportTop = $(window).scrollTop();
+  var viewportBottom = viewportTop + $(window).height();
+
+  return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
+$(window).on("resize scroll", function () {
+  if ($("#button").isInViewport()) {
+    $("#button").addClass(
+      "animate__animated animate__fadeInUp animate_delay-2s"
+    );
+  } else {
+    $("#button").removeClass(
+      "animate__animated animate__fadeInUp animate_delay-2s"
+    );
+  }
+});
+
 class TypeWriter {
   constructor(txtElement, words, wait = 3000) {
     this.txtElement = txtElement;
