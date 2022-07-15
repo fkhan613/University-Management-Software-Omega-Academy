@@ -23,6 +23,10 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <title>Student Login Portal</title>
   </head>
@@ -79,11 +83,11 @@
       <div class="spinner"></div>
     </div>
     <canvas id="canvas"></canvas>
-    <div class="container">
-      <div class="img">
+    <div class="container" id=cont>
+      <div class="img animate__animated animate__fadeInLeft">
         <img src="../public/img/bg.svg" loading="lazy"/>
       </div>
-      <div class="login-content">
+      <div class="login-content animate__animated animate__fadeInRight">
         <form autocomplete="off" action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> method="POST" enctype="multipart/form-data">
           <img src="../public/img/loginAvatar.svg" loading="lazy"/>
           <h2 class="title">Student Login Portal</h2>

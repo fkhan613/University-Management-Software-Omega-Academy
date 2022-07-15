@@ -3,11 +3,11 @@ var ctx = Canvas.getContext("2d");
 const inputs = document.querySelectorAll(".input");
 
 // Wait for window load
-	$(window).load(function() {
-		// Animate loader off screen
-		$(".spinner").fadeOut("slow");;
-    $(".spinner-container").fadeOut("slow");;
-	});
+$(window).load(function () {
+  // Animate loader off screen
+  $(".spinner").fadeOut("slow");
+  $(".spinner-container").fadeOut("slow");
+});
 
 function addcl() {
   let parent = this.parentNode.parentNode;

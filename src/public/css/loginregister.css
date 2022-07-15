@@ -3,7 +3,6 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
   box-sizing: border-box;
   overflow: auto;
 }
@@ -75,6 +74,11 @@ input[type="date"]:required:invalid::-webkit-datetime-edit {
   z-index: 1;
 }
 
+.login-content.load{
+  right:(0);
+  transition: 2s ease-in-out;
+}
+
 .img {
   display: flex;
   justify-content: flex-end;
@@ -87,6 +91,7 @@ input[type="date"]:required:invalid::-webkit-datetime-edit {
   align-items: center;
   text-align: center;
   padding-top: 2rem;
+  transform: 1s ease-in-out;
 }
 
 .img img {
