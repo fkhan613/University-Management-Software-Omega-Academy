@@ -18,11 +18,11 @@ $.fn.isInViewport = function () {
 $(window).on("resize scroll", function () {
   if ($("#button").isInViewport()) {
     $("#button").addClass(
-      "animate__animated animate__fadeInUp animate_delay-2s"
+      "animate__animated animate__fadeInUp animate_delay-3s"
     );
   } else {
     $("#button").removeClass(
-      "animate__animated animate__fadeInUp animate_delay-2s"
+      "animate__animated animate__fadeInUp animate_delay-3s"
     );
   }
 });
