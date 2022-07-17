@@ -5,6 +5,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   overflow: auto;
+  font-family: 'Arial', sans-serif;
 }
 
 ::-webkit-scrollbar {

@@ -27,19 +27,19 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <title>Student Login Portal</title>
   </head>
   <?php
     //prepared statement to check valid login
-    $login_stmt = $conn->prepare("SELECT * FROM students WHERE email = ? AND student_pass = ?");
-    $login_stmt->bind_param("ss", $email, $pass);
+    $login_stmt = $conn->prepare("SELECT * FROM students WHERE email = ?");
+    $login_stmt->bind_param("s", $email);
     $_SESSION['authenticated'] = false;
 
     //if user logged in in the past 1 and 30 minutes
     if(isset($_COOKIE['authenticated'])){
       header("Location: omegaacademy.php");
     }
+    
     //if not logged in in the past 1 and 30 minutes, check cookies 
     elseif (isset($_COOKIE['emailCookie']) && isset($_COOKIE['passwordCookie'])){
           $login_stmt->bind_param("ss", $_COOKIE['emailCookie'], $_COOKIE['passwordCookie']);
@@ -62,19 +62,26 @@
             $login_stmt->execute();
             $result = $login_stmt->get_result();
             
-            if(mysqli_num_rows($result) > 0){ //login successful
-              setCookie("authenticated", true, time() + (3600 * 1.5), "/");
-              $_SESSION['user'] = $result->fetch_assoc();
+            if(mysqli_num_rows($result) > 0){ //email correct
+              //check if password is correct
+              $row = mysqli_fetch_assoc($result);
+              if($row['student_pass'] == $pass){
+                //login successful
+                setCookie("authenticated", true, time() + (3600 * 1.5), "/");
+                $_SESSION['user'] = $result->fetch_assoc();
 
-              if(isset($_POST['rememberMe'])){
-                  //set cookies
-                  setCookie("emailCookie", $email, time() + (86400 * 5), "/");
-                  setCookie("passwordCookie", $pass, time() + (86400 * 5), "/");
-                  $_SESSION['rememberMeChecked'] = true;
-              } 
-              //send to main page
-              header("Location: omegaacademy.php");
-            } else{
+                if(isset($_POST['rememberMe'])){
+                    //set cookies
+                    setCookie("emailCookie", $email, time() + (86400 * 5), "/");
+                    setCookie("passwordCookie", $pass, time() + (86400 * 5), "/");
+                    $_SESSION['rememberMeChecked'] = true;
+                } 
+                //send to main page
+                header("Location: omegaacademy.php");
+              } else{
+                echo "<script> alert('Incorrect email or password');</script>";
+              }
+            } else {
                 echo "<script> alert('Incorrect email or password');</script>";
             }
         }
