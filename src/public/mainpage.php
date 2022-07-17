@@ -1,27 +1,38 @@
 <?php include "../config/database.php"?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <link rel="stylesheet" href="../public/css/mainpage.css" />
-
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Omega Academy</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../public/css/mainpage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
+      rel="stylesheet"
+    />
+        <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
     <div class="spinner-container">
       <div class="spinner"></div>
-    </div>  
+    </div>
     <?php
-        if(!$_SESSION['authenticated']){
+        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie'])){
             echo "<script>alert('NOT AUTHENTICATED'); window.location.href='login.php';</script>";
-        } else{
-            echo "<script>alert('AUTHENTICATED');</script>";
-            if(!$_SESSION['rememberMe'] && !isset($_COOKIE['tempAuth'])){
-                $_SESSION['authenticated'] = false;
-            }
         }
+
 
         if(isset($_POST['logout'])){
             setcookie('emailCookie', '', time() - time(), '/'); // empty value and old timestamp
@@ -32,19 +43,53 @@
             header("Location: login.php");
         }
     ?>
-   <div class="container flex">
+    <div class="container">
       <!--welcome section start-->
-      <section class="welcome-section">
+      <div class="welcome-section flex-column">
         <div class="header">
           <!--Content before waves-->
-          <div class="inner-header flex">
-            <h1>
+          <div class="inner-header">
+            <marquee
+              behavior="scroll"
+              direction="right"
+              scrollamount="14.5"
+              width="100%"
+              class="carousel"
+              scrolldelay="0"
+              ;
+            >
+              <img class="icon" loading="lazy" src="../public/img/icon1.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon2.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon3.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon4.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon5.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon6.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon7.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon8.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon9.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon10.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon11.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon12.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon13.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon14.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon15.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon16.svg" />
+              <img class="icon" loading="lazy" src="../public/img/icon17.svg" />
+            </marquee>
+            <h1
+              class="title"
+              id="title"
+              data-aos="fade-right"
+              data-aos-delay="1200"
+              data-aos-duration="1250"
+            >
               Welcome to The
               <span
                 class="txt-type"
-                data-wait="1500"
-                data-words='["Omega Academy", "Best Academy", "Place Where Students Strive"]'
+                data-wait="2200"
+                data-words='["\"Omega Academy\"", "\"Best Academy\"", "\"Place Where Students Succeed\"", "\"Place Where Dreams Come True\""]'
               ></span>
+              |
             </h1>
           </div>
 
@@ -90,12 +135,64 @@
           <!--Waves end-->
         </div>
         <!--Header ends-->
-      </section>
+      </div>
       <!--welcome section end-->
+
+      <!--main content start-->
+      <div
+        class="main-content flex-column"
+        style="gap:5em;"
+      >
+        <div class="second-title"       
+          data-aos="fade-right"
+          data-aos-duration="550">
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-aos-duration="450"
+            data-aos-easing="ease-in-out"
+          >
+            SELECT YOUR COURSES
+          </h1>
+        </div>
+        <div class="second-title"
+          data-aos="fade-left"
+          data-aos-duration="550">>
+          <h1
+            data-aos="fade-up"
+            data-aos-duration="450"
+            data-aos-easing="ease-in-out"
+          >
+            VIEW OTHER TEAM MEMBER'S COURSES
+          </h1>
+        </div>
+         <div class="second-title"
+          data-aos="fade-right"
+          data-aos-duration="550">>
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-aos-duration="450"
+            data-aos-easing="ease-in-out"
+          >
+            COLLABORATE AND CONQUER TOGETHER
+          </h1>
+        </div>
+          <a href="omega.html" id="button">ENTER THE GATEWAY TO SUCCESS</a>
+          <form action="<?php echo(htmlspecialchars($_SERVER['PHP_SELF'])); ?>" method="POST">
+            <input type="submit" name="logout" value="logout">
+          </form>
+        </div>
+      </div>
     </div>
-    <script src="https://unpkg.com/typeit@8.6.6/dist/index.umd.js"></script>
+    <!--main content end-->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <script src="../public/js/mainpage.js"></script>
-</body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>

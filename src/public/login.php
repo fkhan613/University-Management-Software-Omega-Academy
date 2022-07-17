@@ -34,6 +34,7 @@
     //prepared statement to check valid login
     $login_stmt = $conn->prepare("SELECT * FROM students WHERE email = ? AND student_pass = ?");
     $login_stmt->bind_param("ss", $email, $pass);
+    $_SESSION['authenticated'] = false;
 
     //if cookie is set login
     if (isset($_COOKIE['emailCookie']) && isset($_COOKIE['passwordCookie'])){
@@ -43,36 +44,33 @@
 
           if(mysqli_num_rows($result) > 0){
             //send to main page
-            $_SESSION['authenticated'] = true;
             header("Location: mainpage.php");
-          }
+          } 
     }
 
     if(isset($_POST['login'])){
         //assign variables
         $email = htmlspecialchars($_POST['email']);
         $pass = htmlspecialchars($_POST['password']);
-        $_SESSION['rememberMe'] = false;
 
         //check if email and password are correct
         if(!empty($email) && !empty($pass) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $login_stmt->execute();
             $result = $login_stmt->get_result();
-            $_SESSION['user'] = $result->fetch_assoc();
-            //login successful
-            if(mysqli_num_rows($result) > 0){
+            
+            if(mysqli_num_rows($result) > 0){ //login successful
+              setCookie("authenticated", true, time() + (3600 * 1.5), "/");
+              $_SESSION['user'] = $result->fetch_assoc();
+
               if(isset($_POST['rememberMe'])){
                   //set cookies
                   setCookie("emailCookie", $email, time() + (86400 * 5), "/");
                   setCookie("passwordCookie", $pass, time() + (86400 * 5), "/");
-                  $_SESSION['rememberMe'] = true;
+                  $_SESSION['rememberMeChecked'] = true;
               } 
               //send to main page
-               setCookie("tempAuth", true, time() + (3600 * 2), "/");
-               $_SESSION['authenticated'] = true;
               header("Location: mainpage.php");
             } else{
-                $_SESSION['authenticated'] = false;
                 echo "<script> alert('Incorrect email or password');</script>";
             }
         }
