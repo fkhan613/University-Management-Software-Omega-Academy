@@ -36,15 +36,19 @@
     $login_stmt->bind_param("ss", $email, $pass);
     $_SESSION['authenticated'] = false;
 
-    //if cookie is set login
-    if (isset($_COOKIE['emailCookie']) && isset($_COOKIE['passwordCookie'])){
+    //if user logged in in the past 1 and 30 minutes
+    if(isset($_COOKIE['authenticated'])){
+      header("Location: omegaacademy.php");
+    }
+    //if not logged in in the past 1 and 30 minutes, check cookies 
+    elseif (isset($_COOKIE['emailCookie']) && isset($_COOKIE['passwordCookie'])){
           $login_stmt->bind_param("ss", $_COOKIE['emailCookie'], $_COOKIE['passwordCookie']);
           $login_stmt->execute();
           $result = $login_stmt->get_result();
 
           if(mysqli_num_rows($result) > 0){
             //send to main page
-            header("Location: mainpage.php");
+            header("Location: omegaacademy.php");
           } 
     }
 
@@ -69,7 +73,7 @@
                   $_SESSION['rememberMeChecked'] = true;
               } 
               //send to main page
-              header("Location: mainpage.php");
+              header("Location: omegaacademy.php");
             } else{
                 echo "<script> alert('Incorrect email or password');</script>";
             }
