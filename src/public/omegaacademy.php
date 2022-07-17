@@ -13,7 +13,6 @@
             echo "<script>alert('NOT AUTHENTICATED'); window.location.href='login.php';</script>";
         }
 
-
         if(isset($_POST['logout'])){
             setcookie('emailCookie', '', time() - time(), '/'); // empty value and old timestamp
             setcookie('passwordCookie', '', time() - time(), '/'); 
