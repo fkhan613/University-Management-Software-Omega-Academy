@@ -142,7 +142,7 @@
             class="a"
             style="text-align: center; text-decoration: none; position: absolute;"
           >Create an account</a>
-          <a href="#" class="a" style="text-decoration: none">Forgot Password?</a>
+          <a href="emailauth.php" class="a" style="text-decoration: none">Forgot Password?</a>
         </form>
       </div>
     </div>
