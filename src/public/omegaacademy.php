@@ -10,13 +10,14 @@
 <body>
     <?php
         if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie'])){
-            echo "<script>alert('NOT AUTHENTICATED'); window.location.href='login.php';</script>";
+            echo "<script>alert('Session expired, please login again.'); window.location.href='login.php';</script>";
         }
 
         if(isset($_POST['logout'])){
-            setcookie('emailCookie', '', time() - time(), '/'); // empty value and old timestamp
-            setcookie('passwordCookie', '', time() - time(), '/'); 
-            setcookie('authenticated', '', time() - time(), '/'); 
+            
+            foreach($_COOKIE as $key => $value){
+                setcookie( $key, null, time() - time(), '/' );
+            }
             session_unset();
             session_destroy();
             header("Location: login.php");
