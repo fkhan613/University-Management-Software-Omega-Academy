@@ -31,12 +31,21 @@
   </head>
     <?php
         //generate random code
-        $_SESSION['code'] = rand(100000, 999999);
+        $_SESSION['authCode'] = rand(100000, 999999);
 
         //send email to user with the verification code
+
         
         if(isset($_POST['verify'])){
+          $input = htmlspecialchars($_POST['input']);
 
+          //if the code is correct, send to resetPass page
+          if($input == $_SESSION['authCode']){
+            setcookie('verified', true, time() + (3600), "/");
+            header('Location: resetPass.php');
+          } else{
+              echo "<script> alert('Invalid code');</script>";
+          }
         }
     ?>
   <body>

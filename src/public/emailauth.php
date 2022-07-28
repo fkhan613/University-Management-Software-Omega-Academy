@@ -82,7 +82,7 @@
               />
             </div>
           </div>
-          <input type="submit" name="send" class="btn" value="Login" />
+          <input type="submit" name="send" class="btn" value="send" />
         </form>
       </div>
     </div>
