@@ -30,11 +30,10 @@
     <title>Verification Code</title>
   </head>
     <?php
-        //generate random code
+        //generate a random code
         $_SESSION['authCode'] = rand(100000, 999999);
 
         //send email to user with the verification code
-
         
         if(isset($_POST['verify'])){
           $input = htmlspecialchars($_POST['input']);
