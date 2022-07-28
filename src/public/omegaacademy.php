@@ -18,6 +18,7 @@
             foreach($_COOKIE as $key => $value){
                 setcookie( $key, null, time() - time(), '/' );
             }
+            
             session_unset();
             session_destroy();
             header("Location: login.php");
