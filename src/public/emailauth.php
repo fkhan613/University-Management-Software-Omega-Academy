@@ -30,14 +30,14 @@
     <title>Verify Email</title>
   </head>
   <?php
-        //Import PHPMailer classes into the global namespace
-        //These must be at the top of your script, not inside a function
-        use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\Exception;
+    //Import PHPMailer classes into the global namespace
+    //These must be at the top of your script, not inside a function
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
-        require '../public/PHPMailer/src/Exception.php';
-        require '../public/PHPMailer/src/PHPMailer.php';
-        require '../public/PHPMailer/src/SMTP.php';
+    require '../public/PHPMailer/src/Exception.php';
+    require '../public/PHPMailer/src/PHPMailer.php';
+    require '../public/PHPMailer/src/SMTP.php';
     //prepared statement to check valid login
     $check_email = $conn->prepare("SELECT * FROM students WHERE email = ?");
     $check_email->bind_param("s", $email);
@@ -72,7 +72,7 @@
                   
                   //Recipients
                   $mail->setFrom('omegaacademcy@gmail.com', 'Omega Academy');
-                  $mail->addAddress('farhan.k2005@gmail.com', 'User');  //Add a recipient
+                  $mail->addAddress($_SESSION['user']['email'], $_SESSION['user']['first_name']);  //Add a recipient
 
                   //Content
                   $mail->isHTML(true);                                         //Set email format to HTML
