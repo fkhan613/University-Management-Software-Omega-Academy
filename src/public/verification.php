@@ -60,7 +60,7 @@
               <i class="fas fa-lock"></i>
             </div>
             <div class="div">
-              <h5>Please enter the verification code that has been emailed to you</h5>
+              <h5>Enter your verification code</h5>
               <input
                 type="text"
                 name="input"
@@ -73,6 +73,7 @@
             </div>
           </div>
           <input type="submit" name="verify" class="btn" value="Verify" />
+          <p>Make sure to check your spam folder</p>
         </form>
       </div>
     </div>

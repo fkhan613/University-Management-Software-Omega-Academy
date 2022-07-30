@@ -72,7 +72,7 @@
                   
                   //Recipients
                   $mail->setFrom('omegaacademcy@gmail.com', 'Omega Academy');
-                  $mail->addAddress($_SESSION['user']['email'], $_SESSION['user']['first_name']);  //Add a recipient
+                  $mail->addAddress($_SESSION['user']['email'], $_SESSION['user']['first_name'] . " " .  $_SESSION['user']['last_name']);  //Add a recipient
 
                   //Content
                   $mail->isHTML(true);                                         //Set email format to HTML
