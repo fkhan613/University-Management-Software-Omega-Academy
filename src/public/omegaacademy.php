@@ -23,6 +23,7 @@
             session_destroy();
             header("Location: login.php");
         }
+
     ?>
     <form action="<?php echo(htmlspecialchars($_SERVER['PHP_SELF']))?>" method="POST">
     <input name="logout" type="submit" value="logout">

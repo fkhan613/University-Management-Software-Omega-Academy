@@ -40,6 +40,7 @@
       $register_stmt->bind_param("sssssss", $first_name, $last_name, $dob, $phNum, $address, $email, $student_pass);
       $checkEmail_stmt = $conn->prepare("SELECT * FROM students WHERE email = ?");
       $checkEmail_stmt->bind_param("s",$email);
+      
       //check if form is submitted
       if (isset($_POST['register'])) {
         //assign variables

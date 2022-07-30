@@ -68,8 +68,7 @@
               if($row['student_pass'] == $pass){
                 //login successful
                 setCookie("authenticated", true, time() + (3600 * 1.5), "/");
-                $_SESSION['user'] = $result->fetch_assoc();
-
+                $_SESSION['user'] = $row;
                 if(isset($_POST['rememberMe'])){
                     //set cookies
                     setCookie("emailCookie", $email, time() + (86400 * 5), "/");

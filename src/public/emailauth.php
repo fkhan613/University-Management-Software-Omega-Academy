@@ -44,7 +44,8 @@
             $result = $check_email->get_result();
             
             if(mysqli_num_rows($result) > 0){ //email exists in database
-              $_SESSION['email'] = $email;
+              $_SESSION['user'] = mysqli_fetch_assoc($result);
+              $_SESSION['authCode'] = rand(100000, 999999);
               header('Location: verification.php');
             } else{
                 echo "<script> alert('This email does not exist in our database');</script>";

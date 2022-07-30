@@ -30,14 +30,49 @@
     <title>Verification Code</title>
   </head>
     <?php
-        //generate a random code
-        $_SESSION['authCode'] = rand(100000, 999999);
+        //Import PHPMailer classes into the global namespace
+        //These must be at the top of your script, not inside a function
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\Exception;
 
+        require '../public/PHPMailer/src/Exception.php';
+        require '../public/PHPMailer/src/PHPMailer.php';
+        require '../public/PHPMailer/src/SMTP.php';
+
+        //Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+        
         //send email to user with the verification code
+        try {
+            //Server settings
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'omegaacademcy@gmail.com';              //SMTP username
+            $mail->Password   = 'zbvsiqetbskwwguf';                     //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            
+            //Recipients
+            $mail->setFrom('omegaacademcy@gmail.com', 'Omega Academy');
+            $mail->addAddress('farhan.k2005@gmail.com', 'Farhan User');  //Add a recipient
+
+            //Content
+            $mail->isHTML(true);                                         //Set email format to HTML
+            $mail->Subject = 'Password Reset Verification Code';
+            $mail->Body    = 'Your verfication code is: ' . $_SESSION['authCode'];
+            $mail->AltBody = 'Your verfication code is: ' . $_SESSION['authCode'];
+
+            $mail->send();
+              echo "<script> alert('Email has been sent!');</script>";
+        } catch (Exception $e) {
+            echo "<script?alert('Email could not be sent. Mailer Error: {$mail->ErrorInfo}');</script>";
+        }        
         
         if(isset($_POST['verify'])){
-          $input = htmlspecialchars($_POST['input']);
-
+          $input = intval(htmlspecialchars($_POST['input']));
+          
           //if the code is correct, send to resetPass page
           if($input == $_SESSION['authCode']){
             setcookie('verified', true, time() + (3600), "/");
@@ -57,7 +92,7 @@
         <img src="../public/img/bg.svg" loading="lazy"/>
       </div>
       <div class="login-content animate__animated animate__fadeInRight">
-        <form autocomplete="off" action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> method="POST" enctype="multipart/form-data">
+        <form autocomplete="off" action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> method="POST">
           <img src="../public/img/loginAvatar.svg" loading="lazy"/>
           <h2 class="title">Verification Code</h2>
           <div class="input-div one">
