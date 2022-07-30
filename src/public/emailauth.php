@@ -30,6 +30,14 @@
     <title>Verify Email</title>
   </head>
   <?php
+        //Import PHPMailer classes into the global namespace
+        //These must be at the top of your script, not inside a function
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\Exception;
+
+        require '../public/PHPMailer/src/Exception.php';
+        require '../public/PHPMailer/src/PHPMailer.php';
+        require '../public/PHPMailer/src/SMTP.php';
     //prepared statement to check valid login
     $check_email = $conn->prepare("SELECT * FROM students WHERE email = ?");
     $check_email->bind_param("s", $email);
@@ -46,7 +54,37 @@
             if(mysqli_num_rows($result) > 0){ //email exists in database
               $_SESSION['user'] = mysqli_fetch_assoc($result);
               $_SESSION['authCode'] = rand(100000, 999999);
-              header('Location: verification.php');
+              
+              //Create an instance; passing `true` enables exceptions
+              $mail = new PHPMailer(true);
+              
+              //send email to user with the verification code
+              try {
+                  //Server settings
+                  //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
+                  $mail->isSMTP();                                            //Send using SMTP
+                  $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+                  $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                  $mail->Username   = 'omegaacademcy@gmail.com';              //SMTP username
+                  $mail->Password   = 'zbvsiqetbskwwguf';                     //SMTP password
+                  $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                  $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                  
+                  //Recipients
+                  $mail->setFrom('omegaacademcy@gmail.com', 'Omega Academy');
+                  $mail->addAddress('farhan.k2005@gmail.com', 'User');  //Add a recipient
+
+                  //Content
+                  $mail->isHTML(true);                                         //Set email format to HTML
+                  $mail->Subject = 'Password Reset Verification Code';
+                  $mail->Body    = 'Your verfication code is: ' . $_SESSION['authCode'];
+                  $mail->AltBody = 'Your verfication code is: ' . $_SESSION['authCode'];
+
+                  $mail->send();
+                    echo "<script> alert('Email has been sent!'); window.location.href = 'verification.php';</script>";
+              } catch (Exception $e) {
+                  echo "<script?alert('Email could not be sent. Mailer Error: {$mail->ErrorInfo}');</script>";
+              }        
             } else{
                 echo "<script> alert('This email does not exist in our database');</script>";
             }
