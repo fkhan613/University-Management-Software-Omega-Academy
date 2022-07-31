@@ -30,8 +30,25 @@
     <title>Reset Password</title>
   </head>
     <?php
-        if(isset($_POST['reset'])){
+        //check if the user is verified to be here
+        if(!isset($_COOKIE['verified'])){
+          echo "<script> alert('You are unauthorized to be here!'); window.location.href = 'login.php';</script>";
+        }
 
+        $updatePass = $conn->prepare("UPDATE students SET student_pass = ? WHERE student_id = ?");
+        $updatePass->bind_param("ss", $newPass, $_SESSION['user']['student_id']);
+
+        if(isset($_POST['reset'])){
+          $newPass = htmlspecialchars($_POST['newPass']);
+          $confirmedPass = htmlspecialchars($_POST['confirmedPass']);
+
+          if(!empty($newPass) && !empty($confirmedPass) && $newPass == $confirmedPass){
+            //update password
+            $updatePass->execute();
+            echo "<script> alert('Password Updated!'); window.location.href = 'login.php';</script>";
+          } else{
+            echo "<script> alert('Please ensure the two passwords match');</script>";
+          } 
         }
     ?>
   <body>
@@ -76,7 +93,7 @@
                     class="input"
                     autocomplete="off"
                     required
-                    oninvalid="this.setCustomValidity('Please enter a new password')"
+                    oninvalid="this.setCustomValidity('Please re-enter your password')"
                     oninput="setCustomValidity('')"
                 />
                 </div>

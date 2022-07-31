@@ -50,7 +50,6 @@
         if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $check_email->execute();
             $result = $check_email->get_result();
-            
             if(mysqli_num_rows($result) > 0){ //email exists in database
               $_SESSION['user'] = mysqli_fetch_assoc($result);
               $_SESSION['authCode'] = rand(100000, 999999);

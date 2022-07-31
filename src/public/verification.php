@@ -35,7 +35,7 @@
           
           //if the code is correct, send to resetPass page
           if($input == $_SESSION['authCode']){
-            setcookie('verified', true, time() + (3600), "/");
+            setcookie('verified', true, time() + (900), "/");
             header('Location: resetPass.php');
           } else{
               echo "<script> alert('Invalid code');</script>";
