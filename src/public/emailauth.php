@@ -76,8 +76,8 @@
                   //Content
                   $mail->isHTML(true);                                         //Set email format to HTML
                   $mail->Subject = 'Password Reset Verification Code';
-                  $mail->Body    = 'Your verfication code is: ' . $_SESSION['authCode'] . "\n If you did not intend to change your password, please ignore this email.";
-                  $mail->AltBody = 'Your verfication code is: ' . $_SESSION['authCode'] . "\n If you did not intend to change your password, please ignore this email.";
+                  $mail->Body    = 'Your verfication code is: ' . $_SESSION['authCode'] . "<br></br>If you did not intend to change your password, please ignore this email.";
+                  $mail->AltBody = 'Your verfication code is: ' . $_SESSION['authCode'] . "<br></br>If you did not intend to change your password, please ignore this email.";
 
                   $mail->send();
                     echo "<script> alert('Email has been sent!'); window.location.href = 'verification.php';</script>";
