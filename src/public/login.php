@@ -42,13 +42,19 @@
     
     //if not logged in in the past 1 and 30 minutes, check cookies 
     elseif (isset($_COOKIE['emailCookie']) && isset($_COOKIE['passwordCookie'])){
-          $login_stmt->bind_param("ss", $_COOKIE['emailCookie'], $_COOKIE['passwordCookie']);
+          $login_stmt->bind_param("s", $_COOKIE['emailCookie']);
           $login_stmt->execute();
           $result = $login_stmt->get_result();
 
           if(mysqli_num_rows($result) > 0){
-            //send to main page
-            header("Location: omegaacademy.php");
+
+            //check if the password still matches
+            $row = mysqli_fetch_assoc($result);
+            
+            if($result['student_pass'] == $_COOKIE['passwordCookie']){
+              setCookie("authenticated", true, time() + (3600 * 1.5), "/");
+              header("Location: omegaacademy.php");
+            }
           } 
     }
 
@@ -63,18 +69,22 @@
             $result = $login_stmt->get_result();
             
             if(mysqli_num_rows($result) > 0){ //email correct
+
               //check if password is correct
               $row = mysqli_fetch_assoc($result);
               if($row['student_pass'] == $pass){
+
                 //login successful
                 setCookie("authenticated", true, time() + (3600 * 1.5), "/");
                 $_SESSION['user'] = $row;
+
                 if(isset($_POST['rememberMe'])){
                     //set cookies
                     setCookie("emailCookie", $email, time() + (86400 * 5), "/");
                     setCookie("passwordCookie", $pass, time() + (86400 * 5), "/");
                     $_SESSION['rememberMeChecked'] = true;
                 } 
+                
                 //send to main page
                 header("Location: omegaacademy.php");
               } else{
