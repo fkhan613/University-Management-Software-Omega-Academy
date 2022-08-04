@@ -135,6 +135,7 @@
         <!--Header ends-->
       </div>
       <!--welcome section end-->
+      <br>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <input type="submit" name="logout" value="logout">
         </form>

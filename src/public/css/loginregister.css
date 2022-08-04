@@ -213,13 +213,13 @@ input {
 }
 
 .a {
-  display: block;
-  text-align: right;
   color: rgba(53, 52, 52, 0.719);
   font-size: 0.9rem;
   font-weight: bold;
   transition: 0.3s;
 }
+
+
 
 .a:hover {
   color: #000000;

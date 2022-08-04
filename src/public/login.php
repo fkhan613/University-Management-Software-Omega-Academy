@@ -84,7 +84,7 @@
                     setCookie("passwordCookie", $pass, time() + (86400 * 5), "/");
                     $_SESSION['rememberMeChecked'] = true;
                 } 
-                
+
                 //send to main page
                 header("Location: omegaacademy.php");
               } else{
@@ -146,12 +146,23 @@
           <input type = "checkbox" name = "rememberMe" class="rememberMe"/>
           <label for="rememberMe" class="control-label" style="color: rgba(53, 52, 52, 0.719);font-size: 0.9rem;font-weight: bold;transition: 0.3s;">Remember me for 5 days</label>
           <input type="submit" name="login" class="btn" value="Login" />
-          <a
-            href="register.php"
-            class="a"
-            style="text-align: center; text-decoration: none; position: absolute;"
-          >Create an account</a>
-          <a href="emailauth.php" class="a" style="text-decoration: none">Forgot Password?</a>
+          
+          <div class="a-container" 
+                style="display: flex;
+                  flex-direction: row;
+                  justify-content: space-around;
+                  align-items: center;
+                  flex-wrap: wrap;
+                  gap: 2em;
+                  padding-top: 0.5em;">
+              <a href="#" class="a" style="text-decoration: none; ">Log in as Guest</a>
+              <a
+                href="register.php"
+                class="a"
+                style="text-decoration: none; "
+              >Create an account</a>
+              <a href="emailauth.php" class="a" style="text-decoration: none;">Forgot Password?</a>
+          </div>
         </form>
       </div>
     </div>
