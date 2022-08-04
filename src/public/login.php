@@ -33,7 +33,6 @@
     //prepared statement to check valid login
     $login_stmt = $conn->prepare("SELECT * FROM students WHERE email = ?");
     $login_stmt->bind_param("s", $email);
-    $_SESSION['authenticated'] = false;
 
     //if user logged in in the past 1 and 30 minutes
     if(isset($_COOKIE['authenticated'])){
@@ -52,7 +51,6 @@
             $row = mysqli_fetch_assoc($result);
             
             if($result['student_pass'] == $_COOKIE['passwordCookie']){
-              setCookie("authenticated", true, time() + (3600 * 1.5), "/");
               header("Location: omegaacademy.php");
             }
           } 
@@ -155,7 +153,7 @@
                   flex-wrap: wrap;
                   gap: 2em;
                   padding-top: 0.5em;">
-              <a href="#" class="a" style="text-decoration: none; ">Log in as Guest</a>
+              <a href="omegaacademy.php?guest=true" class="a" style="text-decoration: none;">Log in as Guest</a>
               <a
                 href="register.php"
                 class="a"

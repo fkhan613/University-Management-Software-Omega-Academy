@@ -26,7 +26,15 @@
       <div class="spinner"></div>
     </div>
     <?php
-        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie'])){
+        
+        if(isset($_GET['guest'])){
+          $_SESSION['user']['first_name'] = "Guest";
+          $_SESSION['guest'] = true;
+        }
+
+        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie']) && !isset($_GET['guest'])){
+            session_unset();
+            session_destroy();
             echo "<script>alert('Session expired, please login again.'); window.location.href='login.php';</script>";
         }
 
@@ -85,7 +93,7 @@
               <span
                 class="txt-type"
                 data-wait="2200"
-                data-words='["<?php echo ($_SESSION['user']['first_name']); ?>", "Champion", "Winner", "Genius", "Hero", "Hard Worker"]'
+                data-words='["<?php echo ($_SESSION['user']['first_name']); ?>", "Champion", "Winner", "Genius"]'
               ></span>
               |
             </h1>
