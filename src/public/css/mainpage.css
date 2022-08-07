@@ -210,6 +210,78 @@ a:after {
   background-color: white;
 }
 
+.menu .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 0.75rem;
+  margin: 2em;
+}
+
+.card {
+ width: 16rem;
+ height: 18rem;
+ background: #3405a3;
+ border-radius: 1.5em;
+ box-shadow: 1px 5px 60px 0px #100a886b;
+}
+
+.card:hover{
+  transform: scale(1.2);
+  transition: all ease-in-out 0.2s;
+}
+
+.card .card-border-top {
+ width: 60%;
+ height: 3%;
+ background: #6b64f3;
+ margin: auto;
+ border-radius: 0px 0px 15px 15px;
+}
+
+.card span {
+ font-weight: 600;
+ color: white;
+ text-align: center;
+ display: block;
+ padding-top: 10px;
+ font-size: 16px;
+}
+
+.card .job {
+ font-weight: 400;
+ color: white;
+ display: block;
+ text-align: center;
+ padding-top: 3px;
+ font-size: 12px;
+}
+
+.card .img {
+ width: 5em;
+ height: 80px;
+ background: #6b64f3;
+ border-radius: 15px;
+ margin: auto;
+ margin-top: 25px;
+}
+
+.card button {
+ padding: 8px 25px;
+ display: block;
+ margin: auto;
+ border-radius: 8px;
+ border: none;
+ margin-top: 30px;
+ background: #6b64f3;
+ color: white;
+ font-weight: 600;
+}
+
+.card button:hover {
+  transition: all ease-in-out 0.2s;
+ background: #534bf3;
+}
+
 /* Animation */
 
 .parallax > use {
