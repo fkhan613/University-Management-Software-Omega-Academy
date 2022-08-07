@@ -210,78 +210,147 @@ a:after {
   background-color: white;
 }
 
+/*MAIN CONTENT*/
+
+.nav-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5em;
+  margin-bottom: 5em;
+}
+
+.nav-container > button {
+ align-items: center;
+ background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+ border: 0;
+ border-radius: 8px;
+ box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+ box-sizing: border-box;
+ color: #FFFFFF;
+ display: flex;
+ font-family: Phantomsans, sans-serif;
+ font-size: 18px;
+ justify-content: center;
+ line-height: 1em;
+ max-width: 100%;
+ min-width: 140px;
+ padding: 3px;
+ text-decoration: none;
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ white-space: nowrap;
+ cursor: pointer;
+ transition: all .3s;
+}
+
+.nav-container > button:active,
+.nav-container >button:hover {
+ outline: 0;
+ transform: scale(1.06);
+ transition: all ease-in-out 0.3s;
+}
+
+.nav-container > button span {
+ background-color: rgb(5, 6, 45);
+ padding: 16px 24px;
+ border-radius: 6px;
+ width: 100%;
+ height: 100%;
+ transition: 300ms;
+}
+
+.nav-container > button:hover span {
+ background: none;
+}
+
+.nav-container > button:active {
+ transform: scale(0.9);
+}
+
 .menu .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap: 0.75rem;
-  margin: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+  gap: 5rem;
 }
 
 .card {
- width: 16rem;
- height: 18rem;
- background: #3405a3;
- border-radius: 1.5em;
- box-shadow: 1px 5px 60px 0px #100a886b;
+  width: 16rem;
+  height: 18rem;
+  background: #3405a3;
+  border-radius: 1.5em;
+  box-shadow: 1px 5px 60px 0px #100a886b;
   transition: all ease-in-out 0.2s;
 }
 
-.card:hover{
-  transform: scale(1.15);
-  transition: all ease-in-out 0.2s;
+.card:hover {
+  transform: scale(1.15) !important;
+  transition: all ease-in-out 0.2s !important;
 }
 
 .card .card-border-top {
- width: 60%;
- height: 3%;
- background: #6b64f3;
- margin: auto;
- border-radius: 0px 0px 15px 15px;
+  width: 60%;
+  height: 3%;
+  background: #6b64f3;
+  margin: auto;
+  border-radius: 0px 0px 15px 15px;
 }
 
 .card span {
- font-weight: 600;
- color: white;
- text-align: center;
- display: block;
- padding-top: 10px;
- font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
 }
 
 .card .job {
- font-weight: 400;
- color: white;
- display: block;
- text-align: center;
- padding-top: 3px;
- font-size: 12px;
+  font-weight: 400;
+  color: white;
+  display: block;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 12px;
 }
 
 .card .img {
- width: 5em;
- height: 80px;
- background: #6b64f3;
- border-radius: 15px;
- margin: auto;
- margin-top: 25px;
+  width: 5em;
+  height: 80px;
+  background: #6b64f3;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 25px;
 }
 
 .card button {
- padding: 8px 25px;
- display: block;
- margin: auto;
- border-radius: 8px;
- border: none;
- margin-top: 30px;
- background: #6b64f3;
- color: white;
- font-weight: 600;
+  padding: 8px 25px;
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+  border: none;
+  margin-top: 30px;
+  background: #6b64f3;
+  color: white;
+  font-weight: 600;
 }
 
 .card button:hover {
   transition: all ease-in-out 0.2s;
- background: #534bf3;
+  background: #534bf3;
+  transform: scale(1.08);
 }
+
+.card button:active{
+   transform: scale(0.9);
+}
+/*MAIN CONTENT END*/
+
 
 /* Animation */
 
@@ -394,7 +463,7 @@ a:after {
     word-spacing: 3px;
   }
 
-  .second-title{
+  .second-title {
     margin-bottom: 2em 2em;
   }
 
