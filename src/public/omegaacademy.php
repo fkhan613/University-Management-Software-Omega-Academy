@@ -26,6 +26,10 @@
       <div class="spinner"></div>
     </div>
     <?php
+        //prepared statement to query all the courses which have more than 0 seats
+        $get_courses = $conn -> prepare("SELECT * FROM courses WHERE available_seats > 0 ORDER BY course_name ASC");
+        $get_courses->execute();
+        $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
         
         if(isset($_GET['guest'])){
           $_SESSION['user']['first_name'] = "Guest";
@@ -143,10 +147,61 @@
         <!--Header ends-->
       </div>
       <!--welcome section end-->
-      <br>
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-            <input type="submit" name="logout" value="logout">
-        </form>
+
+      <!--course section start-->
+      <section class="menu" id="menu">
+        <h1
+          style="text-align: center; margin-bottom: 2em; margin-top: 1.8em"
+          data-aos="fade-up"
+          data-aos-duration="450"
+          data-aos-easing="ease-in-out"
+        >
+          Select Your Courses
+        </h1>
+        <div
+          class="nav-container"
+          data-aos="fade-up"
+          data-aos-duration="450"
+          data-aos-easing="ease-in-out"
+        >
+          <button onclick="location.href='#menu'">
+            <span class="text">Select Your Courses</span>
+          </button>
+          <button>
+            <span class="text">View Your Courses</span>
+          </button>
+          <button>
+            <span class="text">View Other Students Courses</span>
+          </button>
+        </div>
+
+        <div class="box-container">
+          <?php foreach($courses as $course){
+
+            $course_name = strval($course['course_name']);
+            $course_code = strval($course['course_code']);
+            $available_seats = strval($course['available_seats']);
+
+            echo("<div
+              class='card'
+              data-aos='fade-up'
+              data-aos-duration='450'
+              data-aos-delay='100'
+              data-aos-easing='ease-in-out'
+            >
+              <div class='card-border-top'></div>
+              <div class='img'></div>
+              <span>$course_name</span>
+              <p class='job'>$course_code</p>
+              <button>Enroll</button>
+              <p class='available_seats'>Available Seats: $available_seats</p>
+            </div>");
+
+          }
+          ?>
+        </div>
+      </section>
+      <!--course section end-->
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>

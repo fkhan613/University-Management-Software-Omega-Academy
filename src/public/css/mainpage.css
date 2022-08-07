@@ -212,61 +212,63 @@ a:after {
 
 /*MAIN CONTENT*/
 
-.nav-container{
+.nav-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 2.5em;
   margin-bottom: 5em;
 }
 
 .nav-container > button {
- align-items: center;
- background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
- border: 0;
- border-radius: 8px;
- box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
- box-sizing: border-box;
- color: #FFFFFF;
- display: flex;
- font-family: Phantomsans, sans-serif;
- font-size: 18px;
- justify-content: center;
- line-height: 1em;
- max-width: 100%;
- min-width: 140px;
- padding: 3px;
- text-decoration: none;
- user-select: none;
- -webkit-user-select: none;
- touch-action: manipulation;
- white-space: nowrap;
- cursor: pointer;
- transition: all .3s;
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Phantomsans, sans-serif;
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .nav-container > button:active,
-.nav-container >button:hover {
- outline: 0;
- transform: scale(1.06);
- transition: all ease-in-out 0.3s;
+.nav-container > button:hover {
+  outline: 0;
+  transform: scale(1.06);
+  transition: all ease-in-out 0.3s;
 }
 
 .nav-container > button span {
- background-color: rgb(5, 6, 45);
- padding: 16px 24px;
- border-radius: 6px;
- width: 100%;
- height: 100%;
- transition: 300ms;
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
 }
 
 .nav-container > button:hover span {
- background: none;
+  background: none;
 }
 
 .nav-container > button:active {
- transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .menu .box-container {
@@ -281,7 +283,7 @@ a:after {
 
 .card {
   width: 16rem;
-  height: 18rem;
+  height: 20rem;
   background: #3405a3;
   border-radius: 1.5em;
   box-shadow: 1px 5px 60px 0px #100a886b;
@@ -306,7 +308,8 @@ a:after {
   color: white;
   text-align: center;
   display: block;
-  padding-top: 10px;
+  padding: 0 0.9em;
+  padding-top: 1em;
   font-size: 16px;
 }
 
@@ -317,6 +320,15 @@ a:after {
   text-align: center;
   padding-top: 3px;
   font-size: 12px;
+}
+
+.card .available_seats {
+  font-weight: 400;
+  color: white;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 1.8em;
 }
 
 .card .img {
@@ -334,7 +346,7 @@ a:after {
   margin: auto;
   border-radius: 8px;
   border: none;
-  margin-top: 30px;
+  margin-top: 20px;
   background: #6b64f3;
   color: white;
   font-weight: 600;
@@ -346,11 +358,10 @@ a:after {
   transform: scale(1.08);
 }
 
-.card button:active{
-   transform: scale(0.9);
+.card button:active {
+  transform: scale(0.9);
 }
 /*MAIN CONTENT END*/
-
 
 /* Animation */
 
