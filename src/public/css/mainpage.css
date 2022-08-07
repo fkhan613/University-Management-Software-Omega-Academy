@@ -223,10 +223,11 @@ a:after {
  background: #3405a3;
  border-radius: 1.5em;
  box-shadow: 1px 5px 60px 0px #100a886b;
+  transition: all ease-in-out 0.2s;
 }
 
 .card:hover{
-  transform: scale(1.2);
+  transform: scale(1.15);
   transition: all ease-in-out 0.2s;
 }
 
