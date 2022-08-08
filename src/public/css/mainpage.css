@@ -360,6 +360,7 @@ a:after {
 
 .card button:active {
   transform: scale(0.9);
+  transition: all ease-in-out 0.01s;
 }
 /*MAIN CONTENT END*/
 

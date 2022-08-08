@@ -26,10 +26,32 @@
       <div class="spinner"></div>
     </div>
     <?php
+
         //prepared statement to query all the courses which have more than 0 seats
-        $get_courses = $conn -> prepare("SELECT * FROM courses WHERE available_seats > 0 ORDER BY course_name ASC");
+        $get_courses = $conn -> prepare(
+        "SELECT *
+        FROM courses c
+        WHERE
+	        NOT EXISTS(
+          SELECT course_name, student_id
+          FROM enrolled_students e
+          WHERE student_id = ? AND c.course_name = e.course_name
+          )
+        ORDER BY course_name");
+        $get_courses -> bind_param("i", $_SESSION['user']['student_id']);
         $get_courses->execute();
         $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
+
+        if(isset($_POST['enroll'])){
+
+          //remove
+
+          $courseID = htmlspecialchars($_POST['course_id']);
+
+          //enroll student into the course
+
+          echo("<script>location.href='#menu'</script>");
+        }
         
         if(isset($_GET['guest'])){
           $_SESSION['user']['first_name'] = "Guest";
@@ -177,12 +199,14 @@
 
         <div class="box-container">
           <?php foreach($courses as $course){
-
+            
+            $course_id = strval($course['course_id']);
             $course_name = strval($course['course_name']);
             $course_code = strval($course['course_code']);
             $available_seats = strval($course['available_seats']);
 
-            echo("<div
+            echo(
+              "<div
               class='card'
               data-aos='fade-up'
               data-aos-duration='450'
@@ -193,7 +217,10 @@
               <div class='img'></div>
               <span>$course_name</span>
               <p class='job'>$course_code</p>
-              <button>Enroll</button>
+              <form action='omegaacademy.php' method='POST'>
+              <input type='hidden' name='course_id' value=$course_id>
+              <button type='submit' name='enroll' id=$course_id>Enroll</button>
+              </form>
               <p class='available_seats'>Available Seats: $available_seats</p>
             </div>");
 

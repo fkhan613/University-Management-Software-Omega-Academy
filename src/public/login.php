@@ -49,6 +49,7 @@
 
             //check if the password still matches
             $row = mysqli_fetch_assoc($result);
+            $_SESSION['user'] = $row;
             
             if($result['student_pass'] == $_COOKIE['passwordCookie']){
               header("Location: omegaacademy.php");
