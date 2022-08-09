@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omega Academy</title>
+    <title>Your Courses</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="../public/css/mainpage.css" />
     <link
@@ -42,34 +42,15 @@
         $get_courses->execute();
         $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
 
-        //prepared statement to enroll student in the desired course
-        $enroll = $conn -> prepare("INSERT INTO enrolled_students (student_id, course_code, course_name)
-                                    SELECT student_id, course_code, course_name
-                                    FROM students
-                                    JOIN courses
-                                    WHERE student_id = ? AND course_id = ?");
-
-        $enroll -> bind_param("ii", $_SESSION['user']['student_id'], $courseID);
-
-        //prepared statement to update the available seats
-        $update_seats = $conn -> prepare("UPDATE courses SET available_seats = available_seats - 1 WHERE course_id = ?");
-        $update_seats -> bind_param("i", $courseID);
-
         if(isset($_POST['enroll'])){
+
+          //remove
 
           $courseID = htmlspecialchars($_POST['course_id']);
 
-          //try enrolling the student 
-          try{
-            $enroll -> execute();
-            $update_seats -> execute();
-            $get_courses->execute();
-            $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
-          } catch(exception $e){ //if there is duplicates, return back to menu
-            echo("<script>window.location.href='#menu'</script>");
-          }
+          //enroll student into the course
 
-          echo("<script>window.location.href='#menu'</script>");
+          echo("<script>location.href='#menu'</script>");
         }
         
         if(isset($_GET['guest'])){
@@ -234,7 +215,7 @@
             >
               <div class='card-border-top'></div>
               <div class='img'></div>
-              <span><p style='color:white;'>$course_name</p></span>
+              <span>$course_name</span>
               <p class='job'>$course_code</p>
               <form action='omegaacademy.php' method='POST'>
               <input type='hidden' name='course_id' value=$course_id>
