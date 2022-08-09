@@ -61,7 +61,7 @@
         if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie']) && !isset($_GET['guest'])){
             session_unset();
             session_destroy();
-            echo "<script>alert('Session expired, login again.'); window.location.href='login.php';</script>";
+            echo "<script>alert('Session expired, please login again.'); window.location.href='login.php';</script>";
         }
 
         if(isset($_POST['logout'])){
