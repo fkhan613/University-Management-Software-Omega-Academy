@@ -28,27 +28,32 @@
     <?php
 
         //prepared statement to query all the courses which have more than 0 seats
-        $get_courses = $conn -> prepare(
-        "SELECT *
-        FROM courses c
-        WHERE
-	        NOT EXISTS(
-          SELECT course_name, student_id
-          FROM enrolled_students e
-          WHERE student_id = ? AND c.course_name = e.course_name
-          )
-        ORDER BY course_name");
-        $get_courses -> bind_param("i", $_SESSION['user']['student_id']);
-        $get_courses->execute();
-        $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
+        $get_user_courses = $conn -> prepare("SELECT * FROM enrolled_students WHERE student_id = ? ORDER BY date_registered");
+        $get_user_courses -> bind_param("i", $_SESSION['user']['student_id']);
+        $get_user_courses->execute();
+        $courses =  mysqli_fetch_all($get_user_courses->get_result(), MYSQLI_ASSOC);
 
-        if(isset($_POST['enroll'])){
+        //prepared statement to drop a course
+        $drop = $conn -> prepare("DELETE FROM enrolled_students WHERE student_id = ? AND course_id = ?");
+        $drop -> bind_param("ii", $_SESSION['user']['student_id'], $courseID);
 
-          //remove
+        //prepared statement to update the available seats
+        $update_seats = $conn -> prepare("UPDATE courses SET available_seats = available_seats + 1 WHERE course_id = ?");
+        $update_seats -> bind_param("i", $courseID);
+
+        if(isset($_POST['drop'])){
 
           $courseID = htmlspecialchars($_POST['course_id']);
 
-          //enroll student into the course
+          //try dropping the course 
+          try{
+            $drop -> execute();
+            $update_seats -> execute();
+            $get_user_courses->execute();
+            $courses =  mysqli_fetch_all($get_user_courses->get_result(), MYSQLI_ASSOC);
+          } catch(exception $e){ //
+            echo("<script>window.location.href='#menu'</script>");
+          }
 
           echo("<script>location.href='#menu'</script>");
         }
@@ -178,7 +183,7 @@
           data-aos-duration="450"
           data-aos-easing="ease-in-out"
         >
-          Select Your Courses
+          View Your Courses
         </h1>
         <div
           class="nav-container"
@@ -186,13 +191,13 @@
           data-aos-duration="450"
           data-aos-easing="ease-in-out"
         >
-          <button onclick="location.href='#menu'">
+          <button onclick="location.href='omegaacademy.php'">
             <span class="text">Select Your Courses</span>
           </button>
-          <button>
+          <button onclick="location.href='#menu'">
             <span class="text">View Your Courses</span>
           </button>
-          <button>
+          <button onclick="location.href='otherstudents.php'">
             <span class="text">View Other Students Courses</span>
           </button>
         </div>
@@ -203,7 +208,8 @@
             $course_id = strval($course['course_id']);
             $course_name = strval($course['course_name']);
             $course_code = strval($course['course_code']);
-            $available_seats = strval($course['available_seats']);
+            $date_registered = strval($course['date_registered']);
+            
 
             echo(
               "<div
@@ -215,15 +221,14 @@
             >
               <div class='card-border-top'></div>
               <div class='img'></div>
-              <span>$course_name</span>
+              <span><p style='color:white;'>$course_name</p></span>
               <p class='job'>$course_code</p>
-              <form action='omegaacademy.php' method='POST'>
+              <form action='yourcourses.php' method='POST'>
               <input type='hidden' name='course_id' value=$course_id>
-              <button type='submit' name='enroll' id=$course_id>Enroll</button>
+              <button type='submit' name='drop'>Drop</button>
               </form>
-              <p class='available_seats'>Available Seats: $available_seats</p>
+              <p class='available_seats'>Date Registered: $date_registered</p>
             </div>");
-
           }
           ?>
         </div>

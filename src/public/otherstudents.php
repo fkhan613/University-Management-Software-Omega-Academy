@@ -28,30 +28,9 @@
     <?php
 
         //prepared statement to query all the courses which have more than 0 seats
-        $get_courses = $conn -> prepare(
-        "SELECT *
-        FROM courses c
-        WHERE
-	        NOT EXISTS(
-          SELECT course_name, student_id
-          FROM enrolled_students e
-          WHERE student_id = ? AND c.course_name = e.course_name
-          )
-        ORDER BY course_name");
-        $get_courses -> bind_param("i", $_SESSION['user']['student_id']);
+        $get_courses = $conn -> prepare("SELECT * FROM enrolled_students e JOIN students s ON s.student_id = e.student_id ");
         $get_courses->execute();
         $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
-
-        if(isset($_POST['enroll'])){
-
-          //remove
-
-          $courseID = htmlspecialchars($_POST['course_id']);
-
-          //enroll student into the course
-
-          echo("<script>location.href='#menu'</script>");
-        }
         
         if(isset($_GET['guest'])){
           $_SESSION['user']['first_name'] = "Guest";
@@ -186,13 +165,13 @@
           data-aos-duration="450"
           data-aos-easing="ease-in-out"
         >
-          <button onclick="location.href='#menu'">
+          <button onclick="location.href='omegaacademy.php'">
             <span class="text">Select Your Courses</span>
           </button>
-          <button>
+          <button onclick="location.href='yourcourses.php'">
             <span class="text">View Your Courses</span>
           </button>
-          <button>
+          <button onclick="location.href='otherstudents.php'">
             <span class="text">View Other Students Courses</span>
           </button>
         </div>
@@ -218,7 +197,6 @@
               <span>$course_name</span>
               <p class='job'>$course_code</p>
               <form action='omegaacademy.php' method='POST'>
-              <input type='hidden' name='course_id' value=$course_id>
               <button type='submit' name='enroll' id=$course_id>Enroll</button>
               </form>
               <p class='available_seats'>Available Seats: $available_seats</p>

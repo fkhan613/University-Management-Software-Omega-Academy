@@ -43,8 +43,8 @@
         $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
 
         //prepared statement to enroll student in the desired course
-        $enroll = $conn -> prepare("INSERT INTO enrolled_students (student_id, course_code, course_name)
-                                    SELECT student_id, course_code, course_name
+        $enroll = $conn -> prepare("INSERT INTO enrolled_students (student_id, course_id, course_code, course_name)
+                                    SELECT student_id, course_id, course_code, course_name
                                     FROM students
                                     JOIN courses
                                     WHERE student_id = ? AND course_id = ?");
@@ -208,10 +208,10 @@
           <button onclick="location.href='#menu'">
             <span class="text">Select Your Courses</span>
           </button>
-          <button>
+          <button onclick="location.href='yourcourses.php'">
             <span class="text">View Your Courses</span>
           </button>
-          <button>
+          <button onclick="location.href='otherstudents.php'">
             <span class="text">View Other Students Courses</span>
           </button>
         </div>
@@ -238,7 +238,7 @@
               <p class='job'>$course_code</p>
               <form action='omegaacademy.php' method='POST'>
               <input type='hidden' name='course_id' value=$course_id>
-              <button type='submit' name='enroll' id=$course_id>Enroll</button>
+              <button type='submit' name='enroll'>Enroll</button>
               </form>
               <p class='available_seats'>Available Seats: $available_seats</p>
             </div>");
