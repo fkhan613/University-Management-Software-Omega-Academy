@@ -27,11 +27,7 @@
     </div>
     <?php
 
-        //prepared statement to query all the courses which have more than 0 seats
-        $get_courses = $conn -> prepare("SELECT * FROM enrolled_students e JOIN students s ON s.student_id = e.student_id ");
-        $get_courses->execute();
-        $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
-        
+        //authentication
         if(isset($_GET['guest'])){
           $_SESSION['user']['first_name'] = "Guest";
           $_SESSION['guest'] = true;
@@ -42,17 +38,11 @@
             session_destroy();
             echo "<script>alert('Session expired, please login again.'); window.location.href='login.php';</script>";
         }
-
-        if(isset($_POST['logout'])){
-            
-            foreach($_COOKIE as $key => $value){
-                setcookie( $key, null, time() - time(), '/' );
-            }
-            
-            session_unset();
-            session_destroy();
-            header("Location: login.php");
-        }
+        
+        //prepared statement to query all the courses which have more than 0 seats
+        $get_courses = $conn -> prepare("SELECT * FROM enrolled_students e JOIN students s ON s.student_id = e.student_id ");
+        $get_courses->execute();
+        $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
     ?>
     <div class="container">
       <!--welcome section start-->
@@ -215,6 +205,10 @@
              }
           }
           ?>
+        </div>
+            <div style="display:flex; justify-content:center; align-items:center; margin-bottom: 2em;">
+              <a onclick="location.href='../config/database.php?logout=true'" style="text-align:center;" id="button">LOGOUT</a>
+            </div>
         </div>
       </section>
       <!--course section end-->

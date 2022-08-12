@@ -27,6 +27,18 @@
     </div>
     <?php
 
+        //authentication
+        if(isset($_GET['guest'])){
+          $_SESSION['user']['first_name'] = "Guest";
+          $_SESSION['guest'] = true;
+        }
+
+        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie']) && !isset($_GET['guest'])){
+            session_unset();
+            session_destroy();
+            echo "<script>alert('Session expired, please login again.'); window.location.href='login.php';</script>";
+        }
+
         //prepared statement to query all the courses which have more than 0 seats
         $get_courses = $conn -> prepare(
         "SELECT *
@@ -77,28 +89,6 @@
           }
 
           echo("<script>window.location.href='#menu'</script>");
-        }
-        
-        if(isset($_GET['guest'])){
-          $_SESSION['user']['first_name'] = "Guest";
-          $_SESSION['guest'] = true;
-        }
-
-        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie']) && !isset($_GET['guest'])){
-            session_unset();
-            session_destroy();
-            echo "<script>alert('Session expired, please login again.'); window.location.href='login.php';</script>";
-        }
-
-        if(isset($_POST['logout'])){
-            
-            foreach($_COOKIE as $key => $value){
-                setcookie( $key, null, time() - time(), '/' );
-            }
-            
-            session_unset();
-            session_destroy();
-            header("Location: login.php");
         }
     ?>
     <div class="container">
@@ -265,7 +255,12 @@
                   </div>");
               } 
             }
+
           ?>
+          </div>
+            <div style="display:flex; justify-content:center; align-items:center; margin-bottom: 2em;">
+              <a onclick="location.href='../config/database.php?logout=true'" style="text-align:center;" id="button">LOGOUT</a>
+            </div>
         </div>
       </section>
       <!--course section end-->

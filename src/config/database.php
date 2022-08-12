@@ -9,5 +9,16 @@
 
     //check if connection is established
     if(!$conn){die('Connection failed: '.mysqli_connect_error());}else{session_start();}
+
+    if(isset($_GET['logout'])){
+            
+        foreach($_COOKIE as $key => $value){
+            setcookie( $key, null, time() - time(), '/' );
+        }
+            
+        session_unset();
+        session_destroy();
+        header("Location: ../public/login.php");
+        }
 ?>
 <html><head><link rel="icon" type="image/png" href="../public/img/loginAvatar.svg"/></head></html> <!----Tab logo ------>
