@@ -1,4 +1,4 @@
-#OMEGA ACADEMY
+#Omega Academy
 
 **UNDER DEVELOPMENT**
 
