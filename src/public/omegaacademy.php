@@ -235,7 +235,7 @@
                     display: block;
                     text-align: center;
                     font-size: 2em;'>
-                  All courses have been booked! Wait until further notice.</h2>");
+                  All courses are full! Wait until further notice from your administrator.</h2>");
             } else{
 
                 foreach($courses as $course){
