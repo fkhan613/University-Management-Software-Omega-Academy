@@ -26,7 +26,6 @@
       <div class="spinner"></div>
     </div>
     <?php
-
         //prepared statement to query all the courses which have more than 0 seats
         $get_user_courses = $conn -> prepare("SELECT * FROM enrolled_students WHERE student_id = ? ORDER BY date_registered");
         $get_user_courses -> bind_param("i", $_SESSION['user']['student_id']);
@@ -203,33 +202,45 @@
         </div>
 
         <div class="box-container">
-          <?php foreach($courses as $course){
-            
-            $course_id = strval($course['course_id']);
-            $course_name = strval($course['course_name']);
-            $course_code = strval($course['course_code']);
-            $date_registered = strval($course['date_registered']);
-            
+          <?php 
 
-            echo(
-              "<div
-              class='card'
-              data-aos='fade-up'
-              data-aos-duration='450'
-              data-aos-delay='100'
-              data-aos-easing='ease-in-out'
-            >
-              <div class='card-border-top'></div>
-              <div class='img'></div>
-              <span><p style='color:white;'>$course_name</p></span>
-              <p class='job'>$course_code</p>
-              <form action='yourcourses.php' method='POST'>
-              <input type='hidden' name='course_id' value=$course_id>
-              <button type='submit' name='drop'>Drop</button>
-              </form>
-              <p class='available_seats'>Date Registered: $date_registered</p>
-            </div>");
-          }
+            if(empty($courses)){
+              echo("<h2 style='  
+                    font-weight: 400;
+                    font-family: 'Lato', sans-serif;
+                    color: black;
+                    display: block;
+                    text-align: center;
+                    font-size: 2em;'>
+                  You are not currently enrolled in any courses.</h2>");
+            } else{
+              foreach($courses as $course){
+
+                $course_id = strval($course['course_id']);
+                $course_name = strval($course['course_name']);
+                $course_code = strval($course['course_code']);
+                $date_registered = $course['date_registered'];
+
+                echo(
+                  "<div
+                  class='card'
+                  data-aos='fade-up'
+                  data-aos-duration='450'
+                  data-aos-delay='100'
+                  data-aos-easing='ease-in-out'
+                  >
+                  <div class='card-border-top'></div>
+                  <div class='img'></div>
+                  <span><p style='color:white;'>$course_name</p></span>
+                  <p class='job'>$course_code</p>
+                  <form action='yourcourses.php' method='POST'>
+                  <input type='hidden' name='course_id' value=$course_id>
+                  <button type='submit' name='drop'>Drop</button>
+                  </form>
+                  <p class='available_seats'>Date Registered: $date_registered</p>
+                  </div>");
+               }
+            }
           ?>
         </div>
       </section>

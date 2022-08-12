@@ -62,9 +62,16 @@
           //try enrolling the student 
           try{
             $enroll -> execute();
-            $update_seats -> execute();
-            $get_courses->execute();
-            $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
+            $result = $enroll->store_result();
+
+            if($result){
+              $update_seats -> execute();
+              $get_courses->execute();
+              $courses =  mysqli_fetch_all($get_courses->get_result(), MYSQLI_ASSOC);
+            } else{
+              echo("<script>window.location.href='#menu'</script>");
+            }
+
           } catch(exception $e){ //if there is duplicates, return back to menu
             echo("<script>window.location.href='#menu'</script>");
           }
@@ -217,33 +224,47 @@
         </div>
 
         <div class="box-container">
-          <?php foreach($courses as $course){
-            
-            $course_id = strval($course['course_id']);
-            $course_name = strval($course['course_name']);
-            $course_code = strval($course['course_code']);
-            $available_seats = strval($course['available_seats']);
+          <?php 
 
-            echo(
-              "<div
-              class='card'
-              data-aos='fade-up'
-              data-aos-duration='450'
-              data-aos-delay='100'
-              data-aos-easing='ease-in-out'
-            >
-              <div class='card-border-top'></div>
-              <div class='img'></div>
-              <span><p style='color:white;'>$course_name</p></span>
-              <p class='job'>$course_code</p>
-              <form action='omegaacademy.php' method='POST'>
-              <input type='hidden' name='course_id' value=$course_id>
-              <button type='submit' name='enroll'>Enroll</button>
-              </form>
-              <p class='available_seats'>Available Seats: $available_seats</p>
-            </div>");
+          
+            if(empty($courses)){
+              echo("<h2 style='  
+                    font-weight: 400;
+                    font-family: 'Lato', sans-serif;
+                    color: black;
+                    display: block;
+                    text-align: center;
+                    font-size: 2em;'>
+                  All courses have been booked! Wait until further notice.</h2>");
+            } else{
 
-          }
+                foreach($courses as $course){
+              
+                  $course_id = strval($course['course_id']);
+                  $course_name = strval($course['course_name']);
+                  $course_code = strval($course['course_code']);
+                  $available_seats = strval($course['available_seats']);
+
+                  echo(
+                    "<div
+                    class='card'
+                    data-aos='fade-up'
+                    data-aos-duration='450'
+                    data-aos-delay='100'
+                    data-aos-easing='ease-in-out'
+                  >
+                    <div class='card-border-top'></div>
+                    <div class='img'></div>
+                    <span><p style='color:white;'>$course_name</p></span>
+                    <p class='job'>$course_code</p>
+                    <form action='omegaacademy.php' method='POST'>
+                    <input type='hidden' name='course_id' value=$course_id>
+                    <button type='submit' name='enroll'>Enroll</button>
+                    </form>
+                    <p class='available_seats'>Available Seats: $available_seats</p>
+                  </div>");
+              } 
+            }
           ?>
         </div>
       </section>

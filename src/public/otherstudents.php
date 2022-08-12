@@ -157,7 +157,7 @@
           data-aos-duration="450"
           data-aos-easing="ease-in-out"
         >
-          Select Your Courses
+        Other Students
         </h1>
         <div
           class="nav-container"
@@ -171,37 +171,48 @@
           <button onclick="location.href='yourcourses.php'">
             <span class="text">View Your Courses</span>
           </button>
-          <button onclick="location.href='otherstudents.php'">
+          <button onclick="location.href='#menu'">
             <span class="text">View Other Students Courses</span>
           </button>
         </div>
 
         <div class="box-container">
-          <?php foreach($courses as $course){
+          <?php 
+
+          if(empty($courses)){
+              echo("<h2 style='  
+                    font-weight: 400;
+                    font-family: 'Lato', sans-serif;
+                    color: black;
+                    display: block;
+                    text-align: center;
+                    font-size: 2em;'>
+                  No students have enrolled in any classes yet.</h2>");
+            } else{
+              foreach($courses as $course){
             
-            $course_id = strval($course['course_id']);
-            $course_name = strval($course['course_name']);
-            $course_code = strval($course['course_code']);
-            $available_seats = strval($course['available_seats']);
+                $course_name = strval($course['course_name']);
+                $course_code = strval($course['course_code']);
+                $date_registered = strval($course['date_registered']);
+                $student = strval($course['first_name']);
 
-            echo(
-              "<div
-              class='card'
-              data-aos='fade-up'
-              data-aos-duration='450'
-              data-aos-delay='100'
-              data-aos-easing='ease-in-out'
-            >
-              <div class='card-border-top'></div>
-              <div class='img'></div>
-              <span>$course_name</span>
-              <p class='job'>$course_code</p>
-              <form action='omegaacademy.php' method='POST'>
-              <button type='submit' name='enroll' id=$course_id>Enroll</button>
-              </form>
-              <p class='available_seats'>Available Seats: $available_seats</p>
-            </div>");
+                echo(
+                  "<div
+                  class='card'
+                  data-aos='fade-up'
+                  data-aos-duration='450'
+                  data-aos-delay='100'
+                  data-aos-easing='ease-in-out'
+                >
+                  <div class='card-border-top'></div>
+                  <span><p style='color:white;'>Student: $student</p></span>
+                  <div class='img'></div>
+                  <span><p style='color:white;'>$course_name</p></span>
+                  <p class='job'>$course_code</p>
+                  <p class='available_seats'>Date Registered: $date_registered</p>
+                </div>");
 
+             }
           }
           ?>
         </div>
