@@ -200,7 +200,9 @@
                     font-weight: 400;
                     font-family: 'Lato', sans-serif;
                     color: black;
-                    display: block;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     text-align: center;
                     font-size: 2em;'>
                   You are not currently enrolled in any courses.</h2>");
