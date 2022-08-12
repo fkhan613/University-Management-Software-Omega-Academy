@@ -1,4 +1,4 @@
-# University-Managment-System-Software
+#OMEGA ACADEMY
 
 **UNDER DEVELOPMENT**
 
