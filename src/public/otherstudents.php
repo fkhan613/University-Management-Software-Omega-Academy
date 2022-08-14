@@ -196,7 +196,7 @@
                 >
                   <div class='card-border-top'></div>
                   <span><p style='color:white;'>Student: $student</p></span>
-                  <div class='img'></div>
+                  <div class='img'><img class='img' loading='lazy' src='../public/img/code.gif' style='display:flex; justify-content:center; align-items:center;'/></div>
                   <span><p style='color:white;'>$course_name</p></span>
                   <p class='job'>$course_code</p>
                   <p class='available_seats'>Date Registered: $date_registered</p>
