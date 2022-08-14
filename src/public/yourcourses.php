@@ -240,6 +240,7 @@
             <div style="display:flex; justify-content:center; align-items:center; margin-bottom: 2em;">
               <a onclick="location.href='../config/database.php?logout=true'" style="text-align:center;" id="button">LOGOUT</a>
             </div>
+            <p class='job' style="text-align:center; cursor:pointer;" onmouseover="this.style.color='skyblue'" onmouseout="this.style.color='grey'" onclick = 'location.href="https://www.linkedin.com/in/farhan-khan-/"'>Created By: Farhan Khan</p>
       </section>
       <!--course section end-->
     </div>
