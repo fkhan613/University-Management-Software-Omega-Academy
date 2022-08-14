@@ -31,10 +31,9 @@
         //authentication
         if(isset($_GET['guest'])){
           $_SESSION['user']['first_name'] = "Guest";
-          $_SESSION['guest'] = true;
         }
 
-        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie']) && !isset($_GET['guest'])){
+        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie']) && !$_SESSION['user']['first_name'] == "Guest"){
             session_unset();
             session_destroy();
             echo "<script>alert('Session expired, please login again.'); window.location.href='login.php';</script>";
@@ -69,6 +68,10 @@
         $update_seats -> bind_param("i", $courseID);
 
         if(isset($_POST['enroll'])){
+
+          if(isset($_COOKIE['guest'])){
+            echo "<script>alert('Create an account to enroll in courses!');window.location.href='omegaacademy.php'</script>";
+          }
 
           $courseID = htmlspecialchars($_POST['course_id']);
 
