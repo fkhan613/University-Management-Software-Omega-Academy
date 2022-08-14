@@ -1,3 +1,4 @@
+<!--READY TO LAUNCH-->
 <?php include "../config/database.php"?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +72,7 @@
             <div class="div">
               <h5>Enter your new password</h5>
               <input
-                type="text"
+                type="password"
                 name="newPass"
                 class="input"
                 autocomplete="off"
@@ -88,7 +89,7 @@
                 <div class="div">
                 <h5>Confirm your new password</h5>
                 <input
-                    type="text"
+                    type="password"
                     name="confirmedPass"
                     class="input"
                     autocomplete="off"

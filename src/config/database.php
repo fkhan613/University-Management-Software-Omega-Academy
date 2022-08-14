@@ -1,3 +1,4 @@
+<!--READY TO LAUNCH-->
 <?php
     //create constant variables for database connection
     define('DB_HOST', 'localhost');
