@@ -29,11 +29,8 @@
     <?php
 
         //authentication
-        if(isset($_GET['guest'])){
-          $_SESSION['user']['first_name'] = "Guest";
-        }
 
-        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie']) && !$_SESSION['user']['first_name'] == "Guest"){
+        if(!isset($_COOKIE['authenticated']) && !isset($_COOKIE['emailCookie']) && !isset($_COOKIE['passwordCookie'])){
             session_unset();
             session_destroy();
             echo "<script>alert('Session expired, please login again.'); window.location.href='login.php';</script>";
