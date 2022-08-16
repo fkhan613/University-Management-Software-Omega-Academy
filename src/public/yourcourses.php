@@ -236,7 +236,11 @@
             <div style="display:flex; justify-content:center; align-items:center; margin-bottom: 2em;">
               <a onclick="location.href='../config/database.php?logout=true'" style="text-align:center;" id="button">LOGOUT</a>
             </div>
-            <p class='job' style="text-align:center; cursor:pointer;" onmouseover="this.style.color='skyblue'" onmouseout="this.style.color='grey'" onclick = 'location.href="https://www.linkedin.com/in/farhan-khan-/"'>Created By: Farhan Khan</p>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 1.3em;">
+              <p class='job' style="text-align:center; cursor:pointer;" onmouseover="this.style.color='skyblue'" onmouseout="this.style.color='grey'" onclick = 'location.href="https://www.linkedin.com/in/farhan-khan-/"'>Created By: Farhan Khan</p>
+              <i onclick="location.href= 'https://www.linkedin.com/in/farhan-khan-/'" style="transform: scale(1.5);" onmouseover="this.style.color='skyblue'" onmouseout="this.style.color='grey'"class="fa-brands fa-linkedin"></i>
+              <i onclick="location.href= 'https://github.com/fkhan613'" style="transform: scale(1.5);" class="fa-brands fa-github" onmouseover="this.style.color='skyblue'" onmouseout="this.style.color='grey'"></i>
+          </div>
       </section>
       <!--course section end-->
     </div>
