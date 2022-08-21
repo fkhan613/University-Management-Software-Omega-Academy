@@ -52,7 +52,7 @@
             $row = mysqli_fetch_assoc($result);
             $_SESSION['user'] = $row;
             
-            if($result['student_pass'] == $_COOKIE['passwordCookie']){
+            if($row['student_pass'] == $_COOKIE['passwordCookie']){
               setCookie("authenticated", true, time() + (3600 * 1.5), "/");
               header("Location: omegaacademy.php");
             }
