@@ -22,4 +22,5 @@
         header("Location: ../public/login.php");
         }
 ?>
-<html><head><link rel="icon" type="image/png" href="../public/img/loginAvatar.svg"/></head></html> <!----Tab logo ------>
+<html><head><link rel="icon" type="image/png" href="../public/img/loginAvatar.svg"/> <meta name="color-scheme" content="light only">
+</head></html> <!----Tab logo ------>
