@@ -1,6 +1,6 @@
 const cards = document.querySelectorAll(".card");
 
-cards.forEach((card, i) => {
+cards.forEach((card) => {
   card.addEventListener("click", () => {
     window.location.href =
       "https://calendar.carleton.ca/undergrad/undergradprograms/computerscience/";
