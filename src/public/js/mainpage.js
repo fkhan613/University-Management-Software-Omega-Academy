@@ -1,4 +1,3 @@
-// Wait for window load
 const cards = document.querySelectorAll(".card");
 
 cards.forEach((card, i) => {
@@ -8,6 +7,7 @@ cards.forEach((card, i) => {
   });
 });
 
+// Wait for window load
 $(window).load(function () {
   // Animate loader off screen
   $(".spinner").fadeOut("slow");
