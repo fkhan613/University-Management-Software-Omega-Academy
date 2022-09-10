@@ -288,6 +288,7 @@ a:after {
   border-radius: 1.5em;
   box-shadow: 1px 5px 60px 0px #100a886b;
   transition: all ease-in-out 0.2s;
+  cursor: pointer;
 }
 
 .card:hover {

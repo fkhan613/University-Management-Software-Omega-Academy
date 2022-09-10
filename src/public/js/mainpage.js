@@ -1,4 +1,13 @@
 // Wait for window load
+const cards = document.querySelectorAll(".card");
+
+cards.forEach((card, i) => {
+  card.addEventListener("click", () => {
+    window.location.href =
+      "https://calendar.carleton.ca/undergrad/undergradprograms/computerscience/";
+  });
+});
+
 $(window).load(function () {
   // Animate loader off screen
   $(".spinner").fadeOut("slow");
